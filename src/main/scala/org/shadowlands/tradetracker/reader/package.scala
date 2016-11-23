@@ -1,8 +1,8 @@
 package org.shadowlands.tradetracker
 
 import java.nio.file.Path
-import java.text.SimpleDateFormat
-import java.util.Date
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 import purecsv.unsafe._
 
@@ -10,17 +10,17 @@ import model._
 
 package object reader {
 
-  case class Template(confirmation: Confirmation, order: Order, trade_date: Date, action: Action,
+  case class Template(confirmation: Confirmation, order: Order, trade_date: LocalDate, action: Action,
                       security: Security, units: Units, ave_price: Price, brokerage: Money, net_proc: Money,
-                      settle_date: Date, conf: String)
+                      settle_date: LocalDate, conf: String)
 
   object Converters {
 
     import purecsv.unsafe.converter.StringConverter
 
-    implicit val date = new StringConverter[Date] {
-      override def from(str: String): Date = new SimpleDateFormat("dd/MM/yyyy").parse(str)
-      override def to(date: Date): String = date.toString
+    implicit val date = new StringConverter[LocalDate] {
+      override def from(str: String): LocalDate = LocalDate.parse(str, DateTimeFormatter.ofPattern("d/M/yyyy"))
+      override def to(date: LocalDate): String = date.toString
     }
     implicit val confirmation = new StringConverter[Confirmation] {
       override def from(str: String): Confirmation = Confirmation(str.toInt)
@@ -55,7 +55,7 @@ package object reader {
   def readCsv(path: Path): Either[String, List[Template]] = try {
     import Converters._
     val lines = CSVReader[Template].readCSVFromFile(path.toFile, true)
-    Right(lines.sortBy(_.trade_date))
+    Right(lines.sortBy(_.trade_date.toEpochDay))
   } catch {
     case ex: Exception =>
       ex.printStackTrace()
@@ -66,4 +66,3 @@ package object reader {
                                        entry.units, entry.ave_price, entry.brokerage, entry.net_proc, entry.settle_date)
 
 }
-

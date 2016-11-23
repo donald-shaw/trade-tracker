@@ -1,6 +1,6 @@
 package org.shadowlands.tradetracker
 
-import java.util.Date
+import java.time.LocalDate
 
 package object model {
 
@@ -38,11 +38,12 @@ package object model {
     def isZero = count == 0
   }
 
-  case class Event(confirmation: Confirmation, order: Order, trade_date: Date, action: Action, security: Security,
-                   units: Units, ave_price: Price, brokerage: Money, net_proc: Money, settle_date: Date)
+  case class Event(confirmation: Confirmation, order: Order, trade_date: LocalDate, action: Action,
+                   security: Security, units: Units, ave_price: Price, brokerage: Money, net_proc: Money,
+                   settle_date: LocalDate)
 
   case class SecurityTrace(security: Security, events: List[Event], current: Units, resolved: Boolean,
-                           net_outcome: Money, costs: Money, start: Date, end: Date) {
+                           net_outcome: Money, costs: Money, start: LocalDate, end: LocalDate) {
     def +(ev: Event) = {
       val upd_units = current + ev.units.count * ev.action.sign
       val upd_outcome = net_outcome + (ev.net_proc * ev.action.sign)

@@ -3,6 +3,7 @@ import java.nio.file.{FileSystems, Path}
 import java.util.Date
 import java.text.SimpleDateFormat
 import org.shadowlands.tradetracker.model._
+import org.shadowlands.tradetracker.processing._
 import org.shadowlands.tradetracker.reader._
 import org.shadowlands.tradetracker.reporting._
 
@@ -12,7 +13,7 @@ val abs = new java.io.File(".").getAbsolutePath
 val root = here.getFileName.getRoot
 //val normed = here.getFileName.normalize()
 //val parent = here.getParent.getFileName
-val base_path_str = "D:/Users/Donald/Projects/trade_tracker/data"
+val base_path_str = "/Users/donaldshaw/Documents/tmp/trading/trade_tracker/data"
 val path = FileSystems.getDefault().getPath(base_path_str)
 val file0 = path.resolve("test_CS.csv")
 val file = path.resolve("ConfirmationDetails_05_to_17-11-16_CS.csv")

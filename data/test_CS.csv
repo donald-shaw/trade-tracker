@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 Confirmation Number,Order Number,Trade Date,Buy/ Sell,Security,Units,Average Price ($),Brokerage (inc GST.),Net Proceeds ($),Settlement Date,Confirmation Status
 42,N345,14/11/2016,B,TST,10000,0.015,29.95,840.05,16/11/2016,Confirmed
+=======
+Confirmation Number,Order Number,Trade Date,Buy/ Sell,Security,Units,Average Price ($),Brokerage (inc GST.),Net Proceeds ($),Settlement Date,Confirmation Status
+42,N345,14/11/2016,B,TST,10000,0.015,29.95,840.05,16/11/2016,Confirmed
+>>>>>>> wk/init-read-in
