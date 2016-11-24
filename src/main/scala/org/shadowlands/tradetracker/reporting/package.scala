@@ -10,7 +10,9 @@ package object reporting {
     writer.write(s"\n\nDump of traces:\n\n")
     val sorted = traces.values.flatten.toSeq.sortBy(_.start.toEpochDay)
     sorted.foreach { trace =>
-      writer.write(s"Security: ${trace.security} - starting: ${trace.start}")
+      writer.write(s"Security: ${trace.security} - starting: ${trace.start}, ending: ${trace.end}" +
+        s", currently: ${if (trace.resolved) "resolved" else s"${trace.current.count} outstanding"}" +
+        s", entries: ${trace.events.size}, net outcome (to-date): ${trace.net_outcome}\n")
     }
     writer.write(s"\n\nDump complete - total traces: ${sorted.size}.\n\n")
   }

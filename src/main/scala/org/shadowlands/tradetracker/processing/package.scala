@@ -16,15 +16,23 @@ package object processing {
 
     def accum(open: Map[Security, SecurityTrace], done: Traces, left: List[Event]): Traces = left match {
       case Nil => finish(open, done)
-      case ev :: rest if (open.contains(ev.security)) => (open(ev.security) + ev) match {
+      case ev :: rest if (open.contains(ev.security)) =>
+        val trace = open(ev.security)
+        System.out.println(s"*** Have security being added to existing trace - ${ev.security.asx_id} (holdings: ${trace.current.count}, ev type: ${ev.action.marker}, count: ${ev.units.count})")
+        (open(ev.security) + ev) match {
         case trace if trace.resolved && done.contains(ev.security) =>
+          System.out.println(s"*** Finalised trace - units left: ${trace.current.count}. There are other (finalised) traces for this security")
           accum(open - ev.security, done.updated(ev.security, trace :: done(ev.security)), rest)
         case trace if trace.resolved =>
+          System.out.println(s"*** Finalised trace - units left: ${trace.current.count}. First (finalised) trace for this security")
           accum(open - ev.security, done.updated(ev.security, trace :: Nil), rest)
         case trace =>
+          System.out.println(s"*** Updated (unfinalised) trace - units left now: ${trace.current.count} ${if (trace.unresolvable) "(NB: not resolvable)" else ""}")
           accum(open.updated(ev.security, trace), done, rest)
       }
-      case ev :: rest => accum(open.updated(ev.security, SecurityTrace(ev)), done, rest)
+      case ev :: rest =>
+        System.out.println(s"*** Have security starting new trace - ${ev.security.asx_id} - ev type: ${ev.action.marker}, count: ${ev.units.count}")
+        accum(open.updated(ev.security, SecurityTrace(ev)), done, rest)
     }
 
     accum(Map.empty, Map.empty, entries)
