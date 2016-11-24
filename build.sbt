@@ -10,4 +10,6 @@ scalaVersion := "2.11.7"
   
 resolvers += Resolver.sonatypeRepo("releases")
 
-libraryDependencies += "com.github.melrief" %% "purecsv" % "0.0.6"  
+libraryDependencies += "com.github.melrief" %% "purecsv" % "0.0.6"
+
+libraryDependencies += "com.github.scopt" %% "scopt" % "3.5.0"
