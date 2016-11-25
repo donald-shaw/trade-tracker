@@ -6,11 +6,11 @@ package object processing {
 
   def accumEvents(entries: List[Event]): Traces = {
 
-    def finish(open: Map[Security, SecurityTrace], done: Traces) = {
+    def finish(unresolved: Map[Security, SecurityTrace], done: Traces) = {
       val updates = for {
-        unres <- open
-        res = done.getOrElse(unres._1, Nil)
-      } yield (unres._1 -> (unres._2 :: res))
+        open <- unresolved
+        res = done.getOrElse(open._1, Nil)
+      } yield (open._1 -> (open._2 :: res))
       done ++ updates
     }
 

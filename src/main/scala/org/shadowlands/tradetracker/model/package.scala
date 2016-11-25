@@ -52,14 +52,14 @@ package object model {
                            net_outcome: Money, costs: Money, start: LocalDate, end: LocalDate, unresolvable: Boolean = false) {
     def +(ev: Event) = {
       val upd_units = current + ev.units.count * ev.action.sign
-      val upd_outcome = net_outcome - (ev.net_proc * ev.action.sign)
+      val upd_outcome = net_outcome - ev.net_proc * ev.action.sign
       copy(events = ev :: events, current = upd_units, resolved = upd_units.isZero && !unresolvable,
            net_outcome = upd_outcome, costs = costs + ev.brokerage, end = ev.trade_date)
     }
   }
   object SecurityTrace {
     def apply(init: Event): SecurityTrace = SecurityTrace(init.security, init :: Nil,
-        init.units.copy(count = init.units.count * init.action.sign), false, init.net_proc * init.action.sign,
+        init.units.copy(count = init.units.count * init.action.sign), false, init.net_proc * -init.action.sign,
         init.brokerage, init.trade_date, init.trade_date, init.action == Action.Sell)
   }
 

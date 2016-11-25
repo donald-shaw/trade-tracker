@@ -1,76 +1,44 @@
 package org.shadowlands.tradetracker.main
 
 import java.io.{PrintWriter, StringWriter}
-import java.nio.file.Path
 
 import org.shadowlands.tradetracker.processing._
 import org.shadowlands.tradetracker.reader._
 import org.shadowlands.tradetracker.reporting._
 
 object TradeTrackerMain {
-  val usage = """
-    Usage: tracker -f csv_file_name
-              """
+
   def main(args: Array[String]) {
-
-
-    // parser.parse returns Option[CliConfig]
     CliParser.parser.parse(args, CliConfig()) match {
       case Some(config) =>
         System.out.println(config)
-        runWith(config)
-        // do stuff
-
+        System.exit(runWith(config))
       case None =>
         // arguments are bad, error message will have been displayed
         System.out.println("CLI options are bad (or 'help' requested) - exiting")
         System.exit(0)
     }
-
-
-
-
-
-//    if (args.length == 0) System.out.println(usage)
-//    type OptionMap = Map[Symbol, Any]
-//
-//    def nextOption(map : OptionMap, list: List[String]): OptionMap = {
-//      def isSwitch(s : String) = (s(0) == '-')
-//      list match {
-//        case Nil => map
-//        case "--max-size" :: value :: tail =>
-//          nextOption(map ++ Map('maxsize -> value.toInt), tail)
-//        case "--min-size" :: value :: tail =>
-//          nextOption(map ++ Map('minsize -> value.toInt), tail)
-//        case string :: opt2 :: tail if isSwitch(opt2) =>
-//          nextOption(map ++ Map('infile -> string), list.tail)
-//        case string :: Nil =>  nextOption(map ++ Map('infile -> string), list.tail)
-//        case option :: tail => System.out.println("Unknown option "+option)
-//          System.exit(1)
-//          Map.empty
-//      }
-//    }
-//    val options = nextOption(Map(), args.toList)
-//    System.out.println(options)
   }
 
-  def runWith(cfg: CliConfig): Unit = {
+  def runWith(cfg: CliConfig) = {
     val writer = cfg.out.map(out => new PrintWriter(out.toFile)).getOrElse(new StringWriter())
-    readCsv(cfg.in) match {
+    val result = readCsv(cfg.in) match {
       case Left(err) =>
         val err_msg = s"Failed to read traces - error: $err"
         writer.write(err_msg)
         if (cfg.out.isDefined) System.err.append(err_msg)
-        System.exit(1)
+        1
       case Right(entries) =>
         val events = entries.map(toEvent)
         val traces = accumEvents(events)
         dump(traces, writer)
+        0
     }
     writer.close()
     if (cfg.out.isEmpty) {
       System.out.append(writer.toString)
     }
+    result
   }
 
 }

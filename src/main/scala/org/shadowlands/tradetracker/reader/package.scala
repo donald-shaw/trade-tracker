@@ -55,7 +55,6 @@ package object reader {
   def readCsv(path: Path): Either[String, List[Template]] = try {
     import Converters._
     val lines = CSVReader[Template].readCSVFromFile(path.toFile, true)
-    //Right(lines.sortBy(_.trade_date.toEpochDay))
     Right(lines.reverse)
   } catch {
     case ex: Exception =>

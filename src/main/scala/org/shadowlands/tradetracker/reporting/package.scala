@@ -14,6 +14,7 @@ package object reporting {
         s", currently: ${if (trace.resolved) "resolved" else s"${trace.current.count} outstanding"}" +
         s", entries: ${trace.events.size}, net outcome (to-date): ${trace.net_outcome}\n")
     }
-    writer.write(s"\n\nDump complete - total traces: ${sorted.size}.\n\n")
+    val tot_out = traces.flatMap{ case (code, traces) => traces.filter(_.resolved) }.map(_.net_outcome.amount).sum
+    writer.write(s"\n\nDump complete - total traces: ${sorted.size}, total outcome of resolved traces: $tot_out.\n\n")
   }
 }
