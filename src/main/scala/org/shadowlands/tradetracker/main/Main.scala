@@ -23,6 +23,8 @@ object TradeTrackerMain {
   }
 
   def runWith(cfg: CliConfig) = try {
+    val already_read = readOrders(cfg.store.get)
+    System.out.println(s"\nRead in previously processed orders:\n${already_read.map(_.number).mkString(", ")}\n\n")
     val writer = cfg.out.map(out => new PrintWriter(out.toFile)).getOrElse(new StringWriter())
     val result = readCsv(cfg.in) match {
       case Left(err) =>
