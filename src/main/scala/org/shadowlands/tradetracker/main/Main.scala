@@ -1,6 +1,7 @@
 package org.shadowlands.tradetracker.main
 
 import java.io.{PrintWriter, StringWriter}
+import java.nio.file.{FileSystems, Path}
 
 import org.shadowlands.tradetracker.processing._
 import org.shadowlands.tradetracker.reader._
@@ -20,7 +21,7 @@ object TradeTrackerMain {
     }
   }
 
-  def runWith(cfg: CliConfig) = {
+  def runWith(cfg: CliConfig) = try {
     val writer = cfg.out.map(out => new PrintWriter(out.toFile)).getOrElse(new StringWriter())
     val result = readCsv(cfg.in) match {
       case Left(err) =>
@@ -31,7 +32,8 @@ object TradeTrackerMain {
       case Right(entries) =>
         val events = entries.map(toEvent)
         val traces = accumEvents(events)
-        dump(traces, writer)
+        //dump(traces, writer)
+        monthlyTotals(traces, writer)
         0
     }
     writer.close()
@@ -39,6 +41,9 @@ object TradeTrackerMain {
       System.out.append(writer.toString)
     }
     result
+  } catch {
+    case ex: Exception => ex.printStackTrace()
+      2
   }
 
 }
@@ -115,3 +120,9 @@ object CliParser {
   }
 
 }
+
+case class CliConfig(in: Path = FileSystems.getDefault().getPath("."),
+                     out: Option[Path] = None, //FileSystems.getDefault().getPath("."),
+                     store: Option[Path] = None, //FileSystems.getDefault().getPath("."),
+                     verbose: Boolean = false,
+                     debug: Boolean = false)    // See https://github.com/scopt/scopt

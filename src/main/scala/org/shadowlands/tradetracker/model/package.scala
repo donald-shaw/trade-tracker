@@ -22,7 +22,7 @@ package object model {
   object Currency {
     val AU = Currency("AUST $", '$', 2)
   }
-  case class Money(amount: Double, unit: Currency = Currency.AU) {
+  case class Money(amount: Double = 0.0, unit: Currency = Currency.AU) {
     def +(amt: Money) = copy(amount = amount + amt.amount)
     def -(amt: Money) = copy(amount = amount - amt.amount)
     def *(amt: Int) = copy(amount = amt * amount)
