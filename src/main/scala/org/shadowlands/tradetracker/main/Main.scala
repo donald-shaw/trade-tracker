@@ -6,6 +6,7 @@ import java.nio.file.{FileSystems, Path}
 import org.shadowlands.tradetracker.processing._
 import org.shadowlands.tradetracker.reader._
 import org.shadowlands.tradetracker.reporting._
+import org.shadowlands.tradetracker.storage._
 
 object TradeTrackerMain {
 
@@ -31,6 +32,7 @@ object TradeTrackerMain {
         1
       case Right(entries) =>
         val events = entries.map(toEvent)
+        storeOrders(events.map(_.order), cfg.store.get)
         val traces = accumEvents(events)
         //dump(traces, writer)
         monthlyTotals(traces, writer)
@@ -70,7 +72,7 @@ object CliParser {
 
     opt[File]('s', "store").optional().valueName("<file>")
       .action( (x, c) => c.copy(store = Some(x.toPath)) )
-      .text("out is an optional file property")
+      .text("store is an optional file property")
 
 //    opt[(String, Int)]("max").action({
 //    case ((k, v), c) => c.copy(libName = k, maxCount = v) }).
@@ -123,6 +125,6 @@ object CliParser {
 
 case class CliConfig(in: Path = FileSystems.getDefault().getPath("."),
                      out: Option[Path] = None, //FileSystems.getDefault().getPath("."),
-                     store: Option[Path] = None, //FileSystems.getDefault().getPath("."),
+                     store: Option[Path] = Some(FileSystems.getDefault().getPath("./data/tt_store")),
                      verbose: Boolean = false,
                      debug: Boolean = false)    // See https://github.com/scopt/scopt
