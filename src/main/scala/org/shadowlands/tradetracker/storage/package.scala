@@ -4,9 +4,11 @@ import java.io.{PrintWriter, Writer}
 import java.nio.file.Path
 import scala.io.Source
 
-import model.Order
+import org.shadowlands.tradetracker.model.{SecurityTrace, Order, Traces}
 
 package object storage {
+
+  private val divider = "===\n"
 
   def storeOrders(orders: Seq[Order], store: Writer): Unit = {
     orders foreach { order =>
@@ -14,11 +16,19 @@ package object storage {
     }
   }
 
-  def storeOrders(orders: Seq[Order], store: Path): Unit = {
+  def storeTraces(traces: Traces, store: Writer): Unit = {
+    traces foreach { case (sec, traces) =>
+      store.write(s"${sec.asx_id}: ${traces.map(tr => tr.current).mkString}\n")
+    }
+  }
+
+  def storeData(orders: Seq[Order], traces: Traces, store: Path): Unit = {
     var writer: Writer = null
     try {
       writer = new PrintWriter(store.toFile)
       storeOrders(orders, writer)
+      writer.write(divider)
+      storeTraces(traces, writer)
     } catch {
       case ex: Exception => ex.printStackTrace
     } finally {
@@ -29,17 +39,23 @@ package object storage {
     }
   }
 
-  def readOrders(store: Source): Seq[Order] = store.getLines().map(Order).toList // NB: toSeq merely hides a stream
+  def readOrders(lines: Iterator[String]): Seq[Order] = lines.map(Order).toSeq
 
-  def readOrders(store: Path): Seq[Order] = {
+  def readTraces(lines: Iterator[String]): Traces = {
+    //lines.map(SecurityTrace).toSeq
+    Map.empty
+  }
+
+  def readData(store: Path): (Seq[Order], Traces) = {
     var source: Source = null
     try {
       source = Source.fromFile(store.toFile)
-      readOrders(source)
+      val (orders, traces) = source.getLines().span(_ != divider)
+      (readOrders(orders), readTraces(traces.drop(1))) // Drop the divider
     } catch {
       case ex: Exception =>
         ex.printStackTrace
-        Nil
+        (Nil, Map.empty)
     } finally {
       if (source != null) {
         source.close()

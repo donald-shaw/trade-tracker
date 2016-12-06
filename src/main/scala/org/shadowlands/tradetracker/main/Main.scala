@@ -23,8 +23,8 @@ object TradeTrackerMain {
   }
 
   def runWith(cfg: CliConfig) = try {
-    val already_read = readOrders(cfg.store.get)
-    System.out.println(s"\nRead in previously processed orders:\n${already_read.map(_.number).mkString(", ")}\n\n")
+    val (prev_orders, prev_traces) = if (cfg.reset) (Seq.empty, Map.empty) else readData(cfg.store)
+    System.out.println(s"\nRead in previously processed orders:\n${prev_orders.map(_.number).mkString(", ")}\n\n")
     val writer = cfg.out.map(out => new PrintWriter(out.toFile)).getOrElse(new StringWriter())
     val result = readCsv(cfg.in) match {
       case Left(err) =>
@@ -33,9 +33,9 @@ object TradeTrackerMain {
         if (cfg.out.isDefined) System.err.append(err_msg)
         1
       case Right(entries) =>
-        val events = entries.map(toEvent)
-        storeOrders(events.map(_.order), cfg.store.get)
+        val events = entries.map(toEvent).filterNot(entry => prev_orders.contains(entry.order))
         val traces = accumEvents(events)
+        storeData(prev_orders ++ events.map(_.order), traces, cfg.store)
         //dump(traces, writer)
         monthlyTotals(traces, writer)
         0
@@ -72,8 +72,8 @@ object CliParser {
       .action( (x, c) => c.copy(out = Some(x.toPath)) )
       .text("out is an optional file property")
 
-    opt[File]('s', "store").optional().valueName("<file>")
-      .action( (x, c) => c.copy(store = Some(x.toPath)) )
+    opt[File]('s', "store").valueName("<file>")
+      .action( (x, c) => c.copy(store = x.toPath) )
       .text("store is an optional file property")
 
 //    opt[(String, Int)]("max").action({
@@ -89,6 +89,10 @@ object CliParser {
 
 //    opt[Map[String,String]]("kwargs").valueName("k1=v1,k2=v2...").action( (x, c) =>
 //    c.copy(kwargs = x) ).text("other arguments")
+
+    opt[Unit]("reset")
+      .action( (_, c) => c.copy(reset = true) )
+      .text("reset is a flag")
 
     opt[Unit]("verbose")
       .action( (_, c) => c.copy(verbose = true) )
@@ -127,6 +131,7 @@ object CliParser {
 
 case class CliConfig(in: Path = FileSystems.getDefault().getPath("."),
                      out: Option[Path] = None, //FileSystems.getDefault().getPath("."),
-                     store: Option[Path] = Some(FileSystems.getDefault().getPath("./data/tt_store")),
+                     store: Path = FileSystems.getDefault().getPath("./data/tt_store"),
+                     reset: Boolean = false,
                      verbose: Boolean = false,
                      debug: Boolean = false)    // See https://github.com/scopt/scopt
