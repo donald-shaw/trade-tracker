@@ -4,7 +4,7 @@ import model._
 
 package object processing {
 
-  def accumEvents(entries: List[Event]): Traces = {
+  def accumEvents(prev: Traces, entries: List[Event]): Traces = {
 
     def finish(unresolved: Map[Security, SecurityTrace], done: Traces) = {
       val updates = for {
@@ -35,7 +35,9 @@ package object processing {
         accum(open.updated(ev.security, SecurityTrace(ev)), done, rest)
     }
 
-    accum(Map.empty, Map.empty, entries)
+    val done = prev.mapValues(traces => traces.filter(_.resolved))
+    val open = prev.mapValues(traces => traces.find(!_.resolved)).filter(_._2.isDefined).mapValues(_.get)
+    accum(open, done, entries)
   }
 
 }

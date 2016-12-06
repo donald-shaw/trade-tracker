@@ -12,8 +12,8 @@ package object model {
     case object Sell extends Action("Sell", 'S', -1)
 
     def fromStr(str: String): Action = str match {
-      case "B" => Action.Buy
-      case "S" => Action.Sell
+      case "B" | "Buy" => Action.Buy
+      case "S" | "Sell" => Action.Sell
       case other => throw new IllegalArgumentException(s"Unknown action: $other")
     }
   }

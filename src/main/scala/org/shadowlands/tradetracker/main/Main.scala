@@ -3,6 +3,7 @@ package org.shadowlands.tradetracker.main
 import java.io.{PrintWriter, StringWriter}
 import java.nio.file.{FileSystems, Path}
 
+import org.shadowlands.tradetracker.model.{Traces, SecurityTrace, Security}
 import org.shadowlands.tradetracker.processing._
 import org.shadowlands.tradetracker.reader._
 import org.shadowlands.tradetracker.reporting._
@@ -17,14 +18,14 @@ object TradeTrackerMain {
         System.exit(runWith(config))
       case None =>
         // arguments are bad, error message will have been displayed
-        System.out.println("CLI options are bad (or 'help' requested) - exiting")
+        System.out.println("CLI options not valid - exiting")
         System.exit(0)
     }
   }
 
   def runWith(cfg: CliConfig) = try {
-    val (prev_orders, prev_traces) = if (cfg.reset) (Seq.empty, Map.empty) else readData(cfg.store)
-    System.out.println(s"\nRead in previously processed orders:\n${prev_orders.map(_.number).mkString(", ")}\n\n")
+    val (prev_events, prev_traces: Traces) = if (cfg.reset) (Seq.empty, Map.empty) else readData(cfg.store)
+//    System.out.println(s"\nRead in previously processed events:\n${prev_events.map(_.order.number).mkString(", ")}\n\n")
     val writer = cfg.out.map(out => new PrintWriter(out.toFile)).getOrElse(new StringWriter())
     val result = readCsv(cfg.in) match {
       case Left(err) =>
@@ -33,9 +34,9 @@ object TradeTrackerMain {
         if (cfg.out.isDefined) System.err.append(err_msg)
         1
       case Right(entries) =>
-        val events = entries.map(toEvent).filterNot(entry => prev_orders.contains(entry.order))
-        val traces = accumEvents(events)
-        storeData(prev_orders ++ events.map(_.order), traces, cfg.store)
+        val events = entries.map(toEvent).filterNot(entry => prev_events.contains(entry))
+        val traces = accumEvents(prev_traces, events)
+        storeData(prev_events ++ events, prev_traces ++ traces, cfg.store)
         //dump(traces, writer)
         monthlyTotals(traces, writer)
         0
