@@ -34,10 +34,12 @@ object TradeTrackerMain {
         if (cfg.out.isDefined) System.err.append(err_msg)
         1
       case Right(entries) =>
-        val events = entries.map(toEvent).filterNot(entry => prev_events.contains(entry))
-        val traces = accumEvents(prev_traces, events)
+        val events = entries.map(toEvent).filterNot(entry => prev_events.contains(entry)).sorted
+        if (cfg.debug) println(s"Read in traces:\n\n${events.mkString(",\n")}\n\n")
+        else if (cfg.codes.nonEmpty) println(s"Read in traces:\n\n${events.filter(ev => cfg.codes.contains(ev.security.asx_id)).mkString(",\n")}\n\n")
+        val traces = accumEvents(prev_traces, events, cfg.debug,cfg.codes)
         storeData(prev_events ++ events, prev_traces ++ traces, cfg.store)
-        //dump(traces, writer)
+        dump(traces, writer)
         monthlyTotals(traces, writer)
         0
     }
@@ -85,8 +87,8 @@ object CliParser {
 //    keyValueName("<libname>", "<max>").
 //    text("maximum count for <libname>")
 
-//    opt[Seq[Path]]('j', "jars").valueName("<jar1>,<jar2>...").action( (x,c) =>
-//    c.copy(jars = x) ).text("jars to include")
+    opt[Seq[String]]('c', "codes").valueName("<code1>,<code2>...").action( (x,c) =>
+    c.copy(codes = x) ).text("codes to debug")
 
 //    opt[Map[String,String]]("kwargs").valueName("k1=v1,k2=v2...").action( (x, c) =>
 //    c.copy(kwargs = x) ).text("other arguments")
@@ -135,4 +137,5 @@ case class CliConfig(in: Path = FileSystems.getDefault().getPath("."),
                      store: Path = FileSystems.getDefault().getPath("./data/tt_store"),
                      reset: Boolean = false,
                      verbose: Boolean = false,
-                     debug: Boolean = false)    // See https://github.com/scopt/scopt
+                     debug: Boolean = false,
+                     codes: Seq[String] = Nil)    // See https://github.com/scopt/scopt

@@ -9,14 +9,14 @@ package object reporting {
 
   def dump(traces: Traces, writer: Writer = System.console.writer): Unit = {
     writer.write(s"\n\nDump of traces:\n\n")
-    val sorted = traces.values.flatten.toSeq.sortBy(_.start.toEpochDay)
+    val sorted = traces.values.flatten.toSeq.sortBy(_.end.toEpochDay)
     sorted.foreach { trace =>
       writer.write(s"Security: ${trace.security} - starting: ${trace.start}, ending: ${trace.end}" +
-        s", currently: ${if (trace.resolved) "resolved" else s"${trace.current.count} outstanding"}" +
-        s", entries: ${trace.events.size}, net outcome (to-date): ${trace.net_outcome}\n")
+                   s", currently: ${if (trace.finalised) "resolved" else s"${trace.current.count} outstanding"}" +
+                   s", entries: ${trace.events.size}, net outcome (to-date): ${trace.net_outcome}\n")
     }
-    val tot_out = traces.flatMap{ case (code, traces) => traces.filter(_.resolved) }.map(_.net_outcome)
-      .foldLeft(Money())((sum, next) => sum + next)
+    val tot_out = traces.flatMap{ case (code, traces) => traces.filter(_.finalised) }.map(_.net_outcome)
+      .foldLeft(Money())((sum, next) => {println(s"Curr sum: $sum, next: $next"); sum + next})
     writer.write(s"\n\nDump complete - total traces: ${sorted.size}, total outcome of resolved traces: $tot_out.\n\n")
   }
 
@@ -24,18 +24,18 @@ package object reporting {
 
   def monthlyTotals(traces: Traces, writer: Writer = System.console.writer): Unit = {
     writer.write(s"\n\nMonthly outcomes:\n\n")
-    val sorted = traces.values.flatten.toSeq.sortBy(_.start.toEpochDay)
-    val monthly_sets = sorted.filter(_.resolved).groupBy(trace => (trace.end.getYear, trace.end.getMonth))
+    val sorted = traces.values.flatten.toSeq.sortBy(_.end.toEpochDay)
+    val monthly_sets = sorted.filter(_.finalised).groupBy(trace => (trace.end.getYear, trace.end.getMonth))
     val monthly_totals = monthly_sets.mapValues(_.foldLeft(Money())((sum, next) => sum + next.net_outcome))
-    monthly_totals.foreach { case ((year, month), total) =>
+    monthly_totals.toSeq.sortBy(_._1._2).sortBy(_._1._1).foreach { case ((year, month), total) =>
       writer.write(s"Total for $month, $year: $total\n")
     }
     val fin_year_totals = monthly_totals.toStream.map{ case ((yr,mth), total) => finYear(yr,mth) -> total }
       .groupBy{ case (yr, tot) => yr }.mapValues(_.foldLeft(Money())((sum, next) => sum + next._2))
-    fin_year_totals.foreach { case (year, total) =>
+    fin_year_totals.toSeq.sortBy(_._1).foreach { case (year, total) =>
       writer.write(s"Total for financial year $year-${year+1}: $total\n")
     }
-    val tot_out = traces.flatMap{ case (code, traces) => traces.filter(_.resolved) }.map(_.net_outcome)
+    val tot_out = traces.flatMap{ case (code, traces) => traces.filter(_.finalised) }.map(_.net_outcome)
       .foldLeft(Money())((sum, next) => sum + next)
     writer.write(s"\n\nTotal of outcomes: $tot_out.\n\n")
   }

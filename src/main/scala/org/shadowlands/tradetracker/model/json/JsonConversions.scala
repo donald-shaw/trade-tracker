@@ -26,14 +26,14 @@ object JsonConversions {
   }
 
   def toJsonTrace(trace: SecurityTrace) =
-    JsonTrace(trace.security.asx_id, trace.events.map(toJsonEvent), trace.current.count, trace.resolved,
+    JsonTrace(trace.security.asx_id, trace.events.map(toJsonEvent), trace.current.count, trace.finalised,
               trace.net_outcome.unit.name, trace.net_outcome.amount, trace.costs.amount, toDateStr(trace.start),
-              toDateStr(trace.end), trace.unresolvable)
+              toDateStr(trace.end))
 
   def fromJsonTrace(trace: JsonTrace) = {
     val curr = Currency.AU
-    SecurityTrace(Security(trace.security), trace.events.map(fromJsonEvent), Units(trace.current), trace.resolved,
+    SecurityTrace(Security(trace.security), trace.events.map(fromJsonEvent), Units(trace.current), trace.finalised,
                   Money(trace.net_outcome, curr), Money(trace.costs, curr), toLocalDate(trace.start),
-                  toLocalDate(trace.end), trace.unresolvable)
+                  toLocalDate(trace.end))
   }
 }
