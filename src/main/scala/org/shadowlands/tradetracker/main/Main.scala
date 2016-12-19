@@ -24,10 +24,10 @@ object TradeTrackerMain {
   }
 
   def runWith(cfg: CliConfig) = try {
-    val (prev_events, prev_traces: Traces) = if (cfg.reset) (Seq.empty, Map.empty) else readData(cfg.store)
-//    System.out.println(s"\nRead in previously processed events:\n${prev_events.map(_.order.number).mkString(", ")}\n\n")
+    val (prev_events, prev_traces: Traces) = if (cfg.reset) (Seq.empty, Map.empty) else readData(cfg.store, cfg.debug)
+    if (cfg.debug) println(s"\nRead in previously processed events:\n${prev_events.map(_.order.number).mkString(", ")}\n\n")
     val writer = cfg.out.map(out => new PrintWriter(out.toFile)).getOrElse(new StringWriter())
-    val result = readCsv(cfg.in) match {
+    val result = readCsv(cfg.in, TemplateType.fromString(cfg.t_type)) match {
       case Left(err) =>
         val err_msg = s"Failed to read traces - error: $err"
         writer.write(err_msg)
@@ -37,8 +37,8 @@ object TradeTrackerMain {
         val events = entries.map(toEvent).filterNot(entry => prev_events.contains(entry)).sorted
         if (cfg.debug) println(s"Read in traces:\n\n${events.mkString(",\n")}\n\n")
         else if (cfg.codes.nonEmpty) println(s"Read in traces:\n\n${events.filter(ev => cfg.codes.contains(ev.security.asx_id)).mkString(",\n")}\n\n")
-        val traces = accumEvents(prev_traces, events, cfg.debug,cfg.codes)
-        storeData(prev_events ++ events, prev_traces ++ traces, cfg.store)
+        val traces = accumEvents(prev_traces, events, cfg.debug, cfg.codes)
+        storeData(prev_events ++ events, traces, cfg.store)
         dump(traces, writer)
         monthlyTotals(traces, writer)
         0
@@ -78,6 +78,9 @@ object CliParser {
     opt[File]('s', "store").valueName("<file>")
       .action( (x, c) => c.copy(store = x.toPath) )
       .text("store is an optional file property")
+
+    opt[String]('t', "type").required().action( (x, c) =>
+    c.copy(t_type = x) ).text("type is the template type to use")
 
 //    opt[(String, Int)]("max").action({
 //    case ((k, v), c) => c.copy(libName = k, maxCount = v) }).
@@ -135,6 +138,7 @@ object CliParser {
 case class CliConfig(in: Path = FileSystems.getDefault().getPath("."),
                      out: Option[Path] = None, //FileSystems.getDefault().getPath("."),
                      store: Path = FileSystems.getDefault().getPath("./data/tt_store"),
+                     t_type: String = "",
                      reset: Boolean = false,
                      verbose: Boolean = false,
                      debug: Boolean = false,

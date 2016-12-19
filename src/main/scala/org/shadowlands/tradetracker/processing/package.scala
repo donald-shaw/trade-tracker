@@ -3,6 +3,7 @@ package org.shadowlands.tradetracker
 import java.time.ZonedDateTime
 
 import model._
+import model.Action._
 
 package object processing {
 
@@ -16,18 +17,55 @@ package object processing {
       done ++ updates
     }
 
+    def add(trace: SecurityTrace, event: Event) = {
+      val upd_units = trace.current + event.units.count * event.action.sign
+      val upd_outcome = trace.net_outcome - event.net_proc * event.action.sign
+      (None, Some(trace.copy(events = event :: trace.events, current = upd_units, finalised = upd_units.isZero,
+        net_outcome = upd_outcome, costs = trace.costs + event.brokerage, end = event.trade_date)))
+    }
+
+    def combine(trace: SecurityTrace, event: Event) = event.action match {
+      case Sell => trace.events.filter(_.action == Action.Buy).find(buy => buy.units == event.units) match {
+        case Some(buy) =>
+          val upd_units = trace.current - buy.units.count * buy.action.sign
+          val upd_outcome = trace.net_outcome + buy.net_proc * buy.action.sign
+          val matched = SecurityTrace(buy, event)
+          if (trace.events.size > 1) {
+            (Some(matched),
+              Some(trace.copy(events = trace.events.filterNot(_ == buy), current = upd_units, finalised = upd_units.isZero,
+                net_outcome = upd_outcome, costs = trace.costs + event.brokerage, end = event.trade_date)))
+          } else { (Some(matched), None) }
+        case _ => add(trace, event)
+      }
+
+      case Buy => add(trace, event)
+
+      case NameChangeFrom =>
+        val upd_units = trace.current - event.units.count
+        //val upd_outcome = trace.net_outcome - event.net_proc * event.action.sign
+        val alt_trace = SecurityTrace(event).copy(security = event.alt_name.getOrElse(event.security), net_outcome = trace.net_outcome, costs = trace.costs)
+        val upd_trace = trace.copy(events = event :: trace.events, current = upd_units, finalised = upd_units.isZero,
+          net_outcome = Money.NoAmount, costs = Money.NoAmount, end = event.trade_date)
+        (Some(alt_trace), Some(upd_trace))
+        //add(trace, event)
+
+      case NameChangeTo => add(trace, event)
+
+
+    }
+
     def accum(open: Map[Security, SecurityTrace], done: Traces, left: List[Event]): Traces = left match {
       case Nil => finish(open, done)
       case ev :: rest if (open.contains(ev.security)) =>
         val trace = open(ev.security)
         if (debug || codes.contains(ev.security.asx_id)) System.out.println(s"*** ${ev.trade_date} Have security being added to existing trace - ${ev.security.asx_id} (holdings: ${trace.current.count}, ev type: ${ev.action.marker}, count: ${ev.units.count})")
-        (open(ev.security) + ev) match {
+        combine(open(ev.security), ev) match {
           case (Some(matched), None) =>
             if (debug || codes.contains(ev.security.asx_id)) System.out.println(s"*** ${ev.trade_date} Finalised trace (${ev.security.asx_id}). Outcome: ${matched.net_outcome}.")
             accum(open - ev.security, done.updated(ev.security, matched :: done.getOrElse(ev.security, Nil)), rest)
           case (Some(matched), Some(remainder)) =>
             if (debug || codes.contains(ev.security.asx_id)) System.out.println(s"*** ${ev.trade_date} Finalised portion of trace - unmatched units: ${remainder.current.count}. Portion outcome: ${matched.net_outcome}.")
-            accum(open.updated(ev.security, remainder), done.updated(ev.security, matched :: done.getOrElse(ev.security, Nil)), rest)
+            accum(open.updated(ev.security, remainder), done.updated(matched.security, matched :: done.getOrElse(matched.security, Nil)), rest)
           case (_, Some(trace)) if trace.finalised && done.contains(ev.security) =>
             if (debug || codes.contains(ev.security.asx_id)) System.out.println(s"*** ${ev.trade_date} Finalised trace - units left: ${trace.current.count}. Outcome: ${trace.net_outcome}. There are other (finalised) traces for this security")
             accum(open - ev.security, done.updated(ev.security, trace :: done(ev.security)), rest)

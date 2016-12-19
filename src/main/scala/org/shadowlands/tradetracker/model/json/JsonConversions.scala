@@ -30,7 +30,7 @@ object JsonConversions {
               trace.net_outcome.unit.name, trace.net_outcome.amount, trace.costs.amount, toDateStr(trace.start),
               toDateStr(trace.end))
 
-  def fromJsonTrace(trace: JsonTrace) = {
+  def fromJsonTrace(trace: JsonTrace): SecurityTrace = {
     val curr = Currency.AU
     SecurityTrace(Security(trace.security), trace.events.map(fromJsonEvent), Units(trace.current), trace.finalised,
                   Money(trace.net_outcome, curr), Money(trace.costs, curr), toLocalDate(trace.start),
