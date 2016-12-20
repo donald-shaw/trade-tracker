@@ -105,7 +105,8 @@ package object reader {
   }
 
   def toEvent(entry: Template) = Event(entry.confirmation, entry.order, entry.trade_date, entry.action, entry.security,
-                                       entry.units, entry.ave_price, entry.brokerage, entry.net_proc, entry.settle_date)
+                                       entry.units, entry.ave_price, entry.brokerage, entry.net_proc, entry.settle_date,
+                                       entry.alt_security, entry.alt_units)
 
 //  def toEvent(entry: NW_Template) = Event(entry.confirmation, entry.order, entry.trade_date, entry.action, entry.security,
 //    entry.units, entry.ave_price, entry.brokerage, entry.net_proc, entry.settle_date)

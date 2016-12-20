@@ -43,7 +43,7 @@ package object processing {
       case NameChangeFrom =>
         val upd_units = trace.current - event.units.count
         //val upd_outcome = trace.net_outcome - event.net_proc * event.action.sign
-        val alt_trace = SecurityTrace(event).copy(security = event.alt_name.getOrElse(event.security), net_outcome = trace.net_outcome, costs = trace.costs)
+        val alt_trace = SecurityTrace(event.flip).copy(net_outcome = trace.net_outcome, costs = trace.costs)
         val upd_trace = trace.copy(events = event :: trace.events, current = upd_units, finalised = upd_units.isZero,
           net_outcome = Money.NoAmount, costs = Money.NoAmount, end = event.trade_date)
         (Some(alt_trace), Some(upd_trace))

@@ -51,6 +51,7 @@ package object model {
   case class Units(count: Int) {
     def +(change: Int) = copy(count + change)
     def -(change: Int) = copy(count - change)
+    def *(amt: Int) = copy(count = amt * count)
     def isZero = count == 0
   }
 
@@ -58,12 +59,13 @@ package object model {
                    security: Security, units: Units, ave_price: Price, brokerage: Money, net_proc: Money,
                    settle_date: LocalDate, alt_name: Option[Security] = None, alt_units: Option[Units] = None)
       extends Ordered[Event] {
+
     override def compare(that: Event): Int = trade_date.compareTo(that.trade_date)
-//    (trade_date.compareTo(that.trade_date), action) match {
-//      case (0, Action.Buy) => if (that.action == Action.Buy) 0 else -1
-//      case (0, Action.Sell) => if (that.action == Action.Buy) 1 else 0
-//      case (result, _) => result
-//    }
+
+    def flip = alt_name match {
+      case Some(alt_sec) => copy(security = alt_sec, units = units * -1, alt_name = None)
+      case _ => this
+    }
   }
 
   case class SecurityTrace(security: Security, events: List[Event], current: Units, finalised: Boolean,
