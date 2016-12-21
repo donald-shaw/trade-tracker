@@ -26,6 +26,7 @@ object TradeTrackerMain {
   def runWith(cfg: CliConfig) = try {
     val (prev_events, prev_traces: Traces) = if (cfg.reset) (Seq.empty, Map.empty) else readData(cfg.store, cfg.debug)
     if (cfg.debug) println(s"\nRead in previously processed events:\n${prev_events.map(_.order.number).mkString(", ")}\n\n")
+    if (cfg.debug) println(s"\nRead in previously processed traces:\n${prev_traces.mkString(",\n")}\n\n")
     val writer = cfg.out.map(out => new PrintWriter(out.toFile)).getOrElse(new StringWriter())
     val result = readCsv(cfg.in, TemplateType.fromString(cfg.t_type)) match {
       case Left(err) =>
@@ -35,7 +36,7 @@ object TradeTrackerMain {
         1
       case Right(entries) =>
         val events = entries.map(toEvent).filterNot(entry => prev_events.contains(entry)).sorted
-        if (cfg.debug) println(s"Read in traces:\n\n${events.mkString(",\n")}\n\n")
+        if (cfg.debug) println(s"Read in new events:\n\n${events.mkString(",\n")}\n\n")
         else if (cfg.codes.nonEmpty) println(s"Read in traces:\n\n${events.filter(ev => cfg.codes.contains(ev.security.asx_id)).mkString(",\n")}\n\n")
         val traces = accumEvents(prev_traces, events, cfg.debug, cfg.codes)
         storeData(prev_events ++ events, traces, cfg.store)

@@ -23,7 +23,7 @@ package object storage {
   def storeTraces(traces: Traces, store: Writer): Unit = {
     traces foreach { case (sec, traces) =>
       //store.write(s"${sec.asx_id}:\n${traces.map(tr => tr.current).mkString("\n")}\n")
-      store.write(s"${sec.asx_id}:\n${traces.map(toJsonTrace).map(_.toJson.compactPrint).mkString("\n")}\n")
+      store.write(s"${sec.asx_id}:\n${traces.map(toJsonTrace).map(_.toJson.compactPrint).mkString("\n")}\n\n")
     }
   }
 

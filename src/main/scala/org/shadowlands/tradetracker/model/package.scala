@@ -10,14 +10,12 @@ package object model {
   object Action {
     case object Buy extends Action("Buy", 'B', 1)
     case object Sell extends Action("Sell", 'S', -1)
-    case object NameChangeFrom extends Action("Rename from", 'N', -1)
-    case object NameChangeTo extends Action("Rename to", 'R', 1)
+    case object NameChange extends Action("Rename", 'N', -1)
 
     def fromStr(str: String): Action = str match {
       case "B" | "Buy" => Action.Buy
       case "S" | "Sell" => Action.Sell
-      case "N" | "Rename from" => Action.NameChangeFrom
-      case "R" | "Rename to" => Action.NameChangeTo
+      case "N" | "Rename" => Action.NameChange
       case other => throw new IllegalArgumentException(s"Unknown action: $other")
     }
   }
@@ -62,33 +60,14 @@ package object model {
 
     override def compare(that: Event): Int = trade_date.compareTo(that.trade_date)
 
-    def flip = alt_name match {
-      case Some(alt_sec) => copy(security = alt_sec, units = units * -1, alt_name = None)
+    def flip(net_outcome: Money, costs: Money) = alt_name match {
+      case Some(alt_sec) => copy(security = alt_sec, units = units * -1, brokerage = costs, net_proc = net_outcome, alt_name = None)
       case _ => this
     }
   }
 
   case class SecurityTrace(security: Security, events: List[Event], current: Units, finalised: Boolean,
-                           net_outcome: Money, costs: Money, start: LocalDate, end: LocalDate) {
-//    def +(ev: Event) = {
-//      (ev, events.filter(_.action == Action.Buy).find(buy => buy.units == ev.units)) match {
-//        case (sell, Some(buy)) if sell.action == Action.Sell =>
-//          val upd_units = current - buy.units.count * buy.action.sign
-//          val upd_outcome = net_outcome + buy.net_proc * buy.action.sign
-//          val matched = SecurityTrace(buy, sell)
-//          if (events.size > 1) {
-//            (Some(matched),
-//             Some(copy(events = events.filterNot(_ == buy), current = upd_units, finalised = upd_units.isZero,
-//                   net_outcome = upd_outcome, costs = costs + ev.brokerage, end = ev.trade_date)))
-//          } else { (Some(matched), None) }
-//        case _ =>
-//          val upd_units = current + ev.units.count * ev.action.sign
-//          val upd_outcome = net_outcome - ev.net_proc * ev.action.sign
-//          (None, Some(copy(events = ev :: events, current = upd_units, finalised = upd_units.isZero,
-//                           net_outcome = upd_outcome, costs = costs + ev.brokerage, end = ev.trade_date)))
-//      }
-//    }
-  }
+                           net_outcome: Money, costs: Money, start: LocalDate, end: LocalDate)
 
   object SecurityTrace {
     def apply(init: Event): SecurityTrace = SecurityTrace(init.security, init :: Nil,
