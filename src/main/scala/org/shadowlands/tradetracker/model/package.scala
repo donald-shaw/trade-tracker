@@ -12,12 +12,14 @@ package object model {
     case object Sell extends Action("Sell", 'S', -1)
     case object NameChange extends Action("Rename", 'N', -1)
     case object Consolidation extends Action("Consolidation", 'C', -1)
+    case object OptionExercise extends Action("Options", 'O', -1)
 
     def fromStr(str: String): Action = str match {
       case "B" | "Buy" => Action.Buy
       case "S" | "Sell" => Action.Sell
       case "N" | "Rename" => Action.NameChange
       case "C" | "Consolidation" => Action.Consolidation
+      case "O" | "Options" => Action.OptionExercise
       case other => throw new IllegalArgumentException(s"Unknown action: $other")
     }
   }
@@ -63,7 +65,8 @@ package object model {
     override def compare(that: Event): Int = trade_date.compareTo(that.trade_date)
 
     def flip(net_outcome: Money, costs: Money) = alt_name match {
-      case Some(alt_sec) => copy(security = alt_sec, units = units * -1, brokerage = costs, net_proc = net_outcome, alt_name = None)
+      case Some(alt_sec) => copy(security = alt_sec, units = units * -1, brokerage = costs,
+                                 net_proc = net_outcome + this.net_proc * this.action.sign, alt_name = None)
       case _ => this
     }
   }

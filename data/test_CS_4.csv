@@ -1,0 +1,3 @@
+Confirmation Number,Order Number,Trade Date,Buy/ Sell,Security,Units,Average Price ($),Brokerage (inc GST.),Net Proceeds ($),Settlement Date,Confirmation Status
+42,N345,14/11/2016,B,TSTO,100000,0.005,29.95,529.95,16/11/2016,Confirmed
+43,N346,20/11/2016,S,TST,100000,0.016,29.95,1670.05,21/11/2016,Confirmed

@@ -42,10 +42,11 @@ package object processing {
 
       case Buy => (None, Some(add(trace, event)), None)
 
-      case NameChange => trace.events.filter(ev => ev.action == Action.Sell && !ev.trade_date.isBefore(event.trade_date))
-                                     .find(_.units.count == -event.units.count) match {
+      case NameChange | OptionExercise =>
+        trace.events.filter(ev => ev.action == Action.Sell && !ev.trade_date.isBefore(event.trade_date))
+                                    .find(_.units.count == -event.units.count) match {
           case Some(sell) =>
-            if (debug) println(s"@@@ Have matched sell for re-name: $sell - (flipped) re-name: $event - trace: $trace")
+            if (debug) println(s"@@@ Have matched sell for re-name/option-ex: $sell - (flipped) re-name/option-ex: $event - trace: $trace")
             val upd_units = trace.current - event.units.count
             val upd_outcome = trace.net_outcome - event.net_proc * event.action.sign
             val upd_costs = trace.costs + event.brokerage
@@ -53,7 +54,7 @@ package object processing {
                                        net_outcome = upd_outcome, costs = upd_costs, start = event.trade_date)
             (None, Some(upd_trace), None)
           case _ =>
-            if (debug) println(s"@@@ Standard match for re-name: $event - trace: $trace")
+            if (debug) println(s"@@@ Standard match for re-name/option-ex: $event - trace: $trace")
             val upd_units = trace.current - event.units.count
             val upd_trace = trace.copy(events = event :: trace.events, current = upd_units, finalised = upd_units.isZero,
             net_outcome = Money.NoAmount, costs = Money.NoAmount, end = event.trade_date)
