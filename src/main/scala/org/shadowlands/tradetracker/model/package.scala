@@ -11,11 +11,13 @@ package object model {
     case object Buy extends Action("Buy", 'B', 1)
     case object Sell extends Action("Sell", 'S', -1)
     case object NameChange extends Action("Rename", 'N', -1)
+    case object Consolidation extends Action("Consolidation", 'C', -1)
 
     def fromStr(str: String): Action = str match {
       case "B" | "Buy" => Action.Buy
       case "S" | "Sell" => Action.Sell
       case "N" | "Rename" => Action.NameChange
+      case "C" | "Consolidation" => Action.Consolidation
       case other => throw new IllegalArgumentException(s"Unknown action: $other")
     }
   }

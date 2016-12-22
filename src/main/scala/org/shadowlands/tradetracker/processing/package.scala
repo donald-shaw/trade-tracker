@@ -59,6 +59,12 @@ package object processing {
             net_outcome = Money.NoAmount, costs = Money.NoAmount, end = event.trade_date)
             (None, Some(upd_trace), Some(event.flip(trace.net_outcome, trace.costs)))
         }
+
+      case Consolidation =>
+        val upd_units = trace.current - event.units.count + event.alt_units.map(_.count).getOrElse(0)
+        val upd_trace = trace.copy(events = event :: trace.events, current = upd_units, finalised = upd_units.isZero,
+          end = if (event.trade_date.isAfter(trace.end)) event.trade_date else trace.end)
+        (None, Some(upd_trace), None)
     }
 
     def accum(open: Map[Security, SecurityTrace], done: Traces, left: List[Event]): Traces = {
