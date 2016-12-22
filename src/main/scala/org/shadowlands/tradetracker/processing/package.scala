@@ -40,7 +40,7 @@ package object processing {
         case _ => (None, Some(add(trace, event)), None)
       }
 
-      case Buy => (None, Some(add(trace, event)), None)
+      case Buy | Purchase => (None, Some(add(trace, event)), None)
 
       case NameChange | OptionExercise =>
         trace.events.filter(ev => ev.action == Action.Sell && !ev.trade_date.isBefore(event.trade_date))
