@@ -1,0 +1,134 @@
+CS:
+Confirmation Number,Order Number,Trade Date,Buy/ Sell,Security,Units,Average Price ($),Brokerage (inc GST.),Net Proceeds ($),Settlement Date,Confirmation Status
+
+67649818,N78924988,30/06/2015,S,MRV,220000,0.004,29.95,850.05,3/07/2015,Confirmed
+
+41101139,C-N46452098,2/11/2009,S,CTPO,20000,0.08,29.95,1570.05,6/11/2009,Confirmed -- matched buys/sell on NW, but no buy for this - SPP?
+
+67678883,N78963451,2/07/2015,S,CZL,20000,0.04,29.95,770.05,7/07/2015,Confirmed  --- also a sell on NW, same day
+
+
+
+
+
+
+#####
+
+
+NW:
+Trade Date,Confirmation Number,Order Number,Order Type,Code,Units,Average Price ($),Brokerage (inc GST.),Net Proceeds ($),Settlement Date,Status
+
+18/06/2007,3611028,6781409,S,WMT,"36,000",0.249,19.95,"8,944.62",21/06/2007,Confirmed
+
+2/07/2015,19761069,9984957269,S,MRV,"160,000",0.004,17.99,622.01,7/07/2015,Confirmed
+
+29/07/2013,16791558,9971093305,B,WHN,"290,000",0.017,17.99,"4,947.99",1/08/2013,Confirmed -- consolid? 350 left
+
+MNC  -  various btw 2013-09-03 to 2014-07-09 - 430K left over
+
+CCCO - lapsed options?
+
+2/07/2015,19755192,9984934788,S,CZL,"16,250",0.04,17.99,632.01,7/07/2015,Confirmed  --- also a sell on CS, same day
+
+
+
+######
+
+Not determined:
+
+
+MEO - 14K buy, 7K sell - consolid?
+
+NAB
+
+MLSOA (2 buys) - lapsed/converted options?
+
+GSE (2 sells) - conv options?
+GSEO (buy) - conv options?
+
+PIE (buy) - name change?
+
+RXLOA (3 buys) - lapsed/converted options?
+
+KALO (2 buys) - lapsed/converted options?
+
+MNM - various - ?
+MNMOA - various - ?
+
+CXY (2 buys) - name change?
+
+APG - various - ? consolids?
+
+GDNO - various - conv opts and other
+GDN - various - conv opts and other
+
+GTE - various - conv opts? SPP? other?
+
+WCUO - various - lapsed/conv opts?
+
+SDL - various - have some outstanding - + consolids?
+
+CDB (buy, sell) - consolid
+
+AMN (sell) - name change?
+
+GRM (buy) - name change?
+
+JKA - various - consolids? some left over still
+
+AEX (2 sells) - name change? conv options? SPPs?
+
+ADY - currently 3900, buy of 19.5K - consolid?
+
+ABU (buy, sell) - consolid
+
+AVBOB (buy) - + various - ?
+
+CBS (buy) - name change?
+
+DYL - buy 30K, curr: 36 2/3 K - ?
+
+AKK - various - have outstanding - consolids?
+
+AHZ - various - have outstanding - consolids?
+
+QMNO - various - ?
+
+NRU - various - ?
+
+CTP (sell) - neg balance - ?
+
+NMR (buy) - name change?
+
+KAL (buy) - name change?
+
+URA (buy, sell) - neg balance - opt conv?
+
+ROBO (buy) - lapsed/conv opts?
+
+SRT - name change to IAM?
+
+RXL - various - ?
+
+MAT - various - consolid? other?
+
+CTR - various - consolids - outstanding (10K) - other?
+
+MYG (buy) - name change?
+
+NEM (sell) - name change? Newmont?
+
+WMTO (buy) - lapsed/conv opts?
+
+RMG - various - consolids - outstanding - other?
+
+JMS - various - conv opts? other?
+
+RMI - various - consolids - outstanding (9K) - conv opts? other?
+
+CNN (buy) - name change?
+
+WPI (buy) - name change?
+
+BLRO (buy) - lapsed/conv opts?
+
