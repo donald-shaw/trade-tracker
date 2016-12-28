@@ -38,7 +38,7 @@ package object reader {
   case class NW_Template(override val trade_date: LocalDate, override val confirmation: Confirmation, override val order: Order,
                          override val action: Action, override val security: Security, override val units: Units,
                          override val ave_price: Price, override val brokerage: Money, override val net_proc: Money,
-                         override val settle_date: LocalDate, conf: String, blank: String)
+                         override val settle_date: LocalDate, conf: String)
     extends Template(confirmation, order, trade_date, action, security, units, ave_price, brokerage, net_proc, settle_date)
 
   case class other_Template(override val confirmation: Confirmation, override val order: Order, date: LocalDate,
