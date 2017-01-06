@@ -25,7 +25,7 @@ package object processing {
     }
 
     def combine(trace: SecurityTrace, event: Event) = event.action match {
-      case Sell => trace.events.filter(ev => ev.action == Action.Buy && !ev.trade_date.isAfter(event.trade_date))
+      case Sell | OptionsLapsed => trace.events.filter(ev => ev.action == Action.Buy && !ev.trade_date.isAfter(event.trade_date))
                                .find(_.units == event.units) match {
         case Some(buy) =>
           val upd_units = trace.current - buy.units.count * buy.action.sign
