@@ -3,7 +3,7 @@ package org.shadowlands.tradetracker.main
 import java.io.{PrintWriter, StringWriter}
 import java.nio.file.{FileSystems, Path}
 
-import org.shadowlands.tradetracker.model.{Traces, SecurityTrace, Security}
+import org.shadowlands.tradetracker.model.{Event, Traces, SecurityTrace, Security}
 import org.shadowlands.tradetracker.processing._
 import org.shadowlands.tradetracker.reader._
 import org.shadowlands.tradetracker.reporting._
@@ -24,7 +24,9 @@ object TradeTrackerMain {
   }
 
   def runWith(cfg: CliConfig) = try {
-    val (prev_events, prev_traces: Traces) = if (cfg.reset) (Seq.empty, Map.empty) else readData(cfg.store, cfg.debug)
+    val unfiltered: (Seq[Event], Traces) = if (cfg.reset) (Seq.empty, Map.empty) else readData(cfg.store, cfg.debug)
+    val prev_events = unfiltered._1.filter(ev => cfg.filter.contains(ev.security.asx_id))
+    val prev_traces: Traces = unfiltered._2.filterKeys(tr => cfg.filter.contains(tr.asx_id))
     if (cfg.debug) println(s"\nRead in previously processed events:\n${prev_events.map(_.order.number).mkString(", ")}\n\n")
     if (cfg.debug) println(s"\nRead in previously processed traces:\n${prev_traces.mkString(",\n")}\n\n")
     val writer = cfg.out.map(out => new PrintWriter(out.toFile)).getOrElse(new StringWriter())
@@ -35,7 +37,7 @@ object TradeTrackerMain {
         if (cfg.out.isDefined) System.err.append(err_msg)
         1
       case Right(entries) =>
-        val events = entries.map(toEvent).filterNot(entry => prev_events.contains(entry)).sorted
+        val events = entries.map(toEvent).filterNot(entry => prev_events.contains(entry) || cfg.filter.contains(entry.security.asx_id)).sorted
         if (cfg.debug) println(s"Read in new events:\n\n${events.mkString(",\n")}\n\n")
         else if (cfg.codes.nonEmpty) println(s"Read in traces:\n\n${events.filter(ev => cfg.codes.contains(ev.security.asx_id)).mkString(",\n")}\n\n")
         val traces = accumEvents(prev_traces, events, cfg.debug, cfg.codes)
@@ -91,8 +93,11 @@ object CliParser {
 //    keyValueName("<libname>", "<max>").
 //    text("maximum count for <libname>")
 
-    opt[Seq[String]]('c', "codes").valueName("<code1>,<code2>...").action( (x,c) =>
+    opt[Seq[String]]('c', "codes").valueName("<code1>,<code2>...").action( (x, c) =>
     c.copy(codes = x) ).text("codes to debug")
+
+    opt[Seq[String]]('f', "filter").valueName("<code1>,<code2>...").action( (x, c) =>
+      c.copy(filter = x) ).text("codes to filter out and ignore")
 
 //    opt[Map[String,String]]("kwargs").valueName("k1=v1,k2=v2...").action( (x, c) =>
 //    c.copy(kwargs = x) ).text("other arguments")
@@ -143,4 +148,5 @@ case class CliConfig(in: Path = FileSystems.getDefault().getPath("."),
                      reset: Boolean = false,
                      verbose: Boolean = false,
                      debug: Boolean = false,
+                     filter: Seq[String] = Nil,
                      codes: Seq[String] = Nil)    // See https://github.com/scopt/scopt
