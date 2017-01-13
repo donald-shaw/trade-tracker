@@ -54,9 +54,12 @@ Resolveable by:
 GSE (2 sells - 220K, 13/1/2010) - conv options? No apparent name change
 GSEO (buy - 120K [NW?] on 27/4/2007) - conv options? No apparent name change
 Excercise of options: 6/11/2007: 120K NW, 100K CS
+In fact:
+GSEO - conv - 120K opts - 25/10/07 - $6K
+GSEO - conv - 100K opts - 25/10/07 - $5K
 Bonus issue: 25K & 30K GSEO on 19/06/2008 (both CS) - where did these go? Otherwise resolveable by:
-1110018,GSEO exc CS 1,6/11/2007,O,GSEO,100000,<conv cost/sh>,,<total>,GSE,
-1110019,GSEO exc NW 1,6/11/2007,O,GSEO,120000,<conv cost/sh>,,<total>,GSE,
+1110018,GSEO exc CS 1,6/11/2007,O,GSEO,100000,0.05,,5000,GSE,
+1110019,GSEO exc NW 1,6/11/2007,O,GSEO,120000,0.05,,6000,GSE,
 
 
 PIE (buy) - name change? Yes: to Newzulu Ltd (NWZ) - 20/8/2014 - Also consolid? Have 3,750 NWZ left
@@ -66,9 +69,11 @@ Resolveable by (except for extra 12500???):
 
 
 RXLOA (3 buys) - lapsed/converted options? No apparent name change
-lapsed on 31/07/2011? Were converted, tho!
+lapsed on 31/07/2011? Were converted, tho! See:
+RXLOA - conv - 100K opts - 11/7/11 $1500
+RXLOA - conv - 190K opts - 11/7/11 $2850
 Resolveable by:
-1110022,RXLOA exc 1,<date>,O,RXLOA,290000,0.015,,<total>,RXL,
+1110022,RXLOA exc 1,11/07/2011,O,RXLOA,290000,0.015,,4350,RXL,
 
 
 MNM - various - ? No apparent name change
@@ -129,7 +134,7 @@ Resolveable by:
 JKA - various - consolids? some left over still
 
 AEX (2 sells) - name change? conv options? SPPs? Yes - name changes: to Connected IO Ltd (CIO) - 6/12/2016, from G8Communications Ltd (G8C), from 4/3/2016, from Leopard Resources NL (LRR), from 23/12/2011. Also, to Acclaim Exploration NL (AEX) from Tindals Gold Mines NL (TGM) - 18/6/1996
-Resolveable by adding back some trades that got missed when compiling together 'full' list of trades! They should look like:
+Resolveable by adding back some trades that got missed when compiling together 'full' list of trades! Similarly, see WGP below. They should look like:
 # N27026957,24/05/2007,B,AEX,210000,0.049,31.9,10258.1,??/05/2007,Confirmed
 # 25186575,N27018405,23/05/2007,B,AEX,200000,0.049,29.95,9770.05,??/05/2007,Confirmed
 
@@ -201,9 +206,19 @@ Resolveable by:
 1110008,SRT 2 IAM 1,25/8/2016,N,SRT,360000,,,,IAM,
 
 
-CTR - various - consolids - outstanding (10K) - other?
+CTR - various - consolids - outstanding (10K) - other? Will be consolid from 515K + 'top-up' (or consolid, then 'top-up'):
+CTR - top up to mkt'ble parcel - 5/11/15 - $242.50
+Consolid from 5/5/2015, on 100:1 basis.
+Resolveable by:
+1110036,CTR 100 to 1,5/5/2015,C,CTR,515000,,,,,5150
+1110037,CTR top up 1,5/11/2015,P,CTR,4850,0.05,,242.50,,
 
-MYG (buy) - name change? Bought out by Doray Minerals Ltd (DRM): 16/2/2015 -> 1 sh/opt / 9.5 MYG shs/opts
+
+WGP - 60K sell - name change to Titan Energy Ltd (TTE) (18/10/2011), then TTE Petroleum Ltd (TTE) (4/9/2015) - doesn't explain things
+Looking like missed transactions? Around same time (mid/late 2007) as for AEX (qv)
+
+
+MYG (buy - 44K) - name change? Bought out by Doray Minerals Ltd (DRM): 16/2/2015 -> 1 sh/opt / 9.5 MYG shs/opts - so what happened to my DRM holding???
 
 NEM (sell) - name change? Newmont? Newmont: delisted on 17/2/2010.
 
@@ -221,15 +236,23 @@ Resolveable by:
 1110004,RMG 33 to 1 NW,15/9/2014,C,RMG,151667,,,,,4595
 1110005,RMG 33 to 1 CS,15/9/2014,C,RMG,443334,,,,,13434
 
-JMS - various - conv opts? other? No record of JMSO events (but I'm sure there ought to be!)
 
-RMI - various - consolids - outstanding (9K) - conv opts? other?
+JMS - various - conv opts? other? No record of JMSO events (but I'm sure there ought to be!).Curr balance supposedly -95719 sh. NB: delisted 10/1/2014.
 
-CNN (buy) - name change? Yes: 22/4/2015 -> SES (Secos Group Ltd). Also, poss. consolid (as CNN) 100:1 on 9/4/2015?
 
-WPI (buy) - name change? Yes: 18/3/16 -> CIZ
+RMI - (-140K !?) various - consolids - outstanding (9K) - conv opts? other? Dates to ~2007 - missed transactions? See AEX/WGP above.
 
-BLRO (buy) - lapsed/conv opts?
+CNN (buy - 450K) - name change? Yes: 22/4/2015 -> SES (Secos Group Ltd). Also, poss. consolid (as CNN) 100:1 on 9/4/2015? Should have 4.5K SES?
+Prob took advantage of unmarketable shares sale (finalised by ~6/1/2015)? $0.002/sh for parcels below 166666 sh. 450K @ .2c/sh -> $900.
+
+WPI (buy - 90K) - name change? Yes: 18/3/16 -> CIZ
+Resolveable by:
+1110038,WPI 2 CIZ 1,18/3/2016,N,WPI,90000,,,,CIZ,
+
+
+BLRO (buy) - lapsed/conv opts? Conv: BLRO - conv - 48K opts - 15/2/11 - $2160
+Resolveable by:
+1110039,BLRO exc 1,<date: ~15/2/11>,O,BLRO,48000,0.045,,2160.00,BLR,
 
 
 
