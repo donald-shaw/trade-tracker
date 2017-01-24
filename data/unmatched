@@ -96,14 +96,17 @@ APG - various - ? consolids? No apparent name change. 70K extra sold - probably 
 
 GDNO - various - conv opts and other. Name change: to Vonex Ltd (VNX) - 23/2/2016, from Aleator Energy Ltd (AWD), from 21/6/2012.
 101K opts conv, but had -7.5K remainder? Deal with later, but should include:
-1110023,GDNO exc 1,<date: ~27/6/07>,O,GDNO,101000,<conv cost/sh>,,<total>,GDN,
+1110023,GDNO exc 1,<date: ~27/6/07>,O,GDNO,101000,0.30,,30300,GDN,
 GDN - various - conv opts and other - as above. -101K sorted by opt conv, remaining -1K, tho? Odd initial sell...
 
 
 GTE - various - conv opts? SPP? other? No apparent name change. SPP. Left with -30284 sh - found! Branched off from URA in mid 2007 (plus assoc SPP?)
-Partially resolvable by:
-1110024,GTE options offer 1,<date: ~14/8/07>,P,GTEO?,<count>,<cost / opt>,,37.85,,
-1110025,GTE entitlement 1,<date: ~21/5/08>,P,GTE,<count>,<cost / sh>,,605.68,,
+Possibly resolvable by:
+#1110024,GTE options offer 1,<date: ~14/8/07>,P,GTEO?,<count>,<cost / opt>,,37.85,,
+#1110025,GTE entitlement 1,<date: ~21/5/08>,P,GTE,<count>,<cost / sh>,,605.68,,
+Actually, try:
+1110024,GTE options offer 1,14/8/07,P,GTEO,30284,0.00125,,37.85,,
+1110025,GTE entitlement 1,21/5/08,P,GTE,30284,0.02,,605.68,,
 The rest can potentially be explained as below!:
 URA/GWE [GTE!] share offer (?) - 23/4/07: $5K (is reference to same purchase? Just ref to receiving GWE share allotment for existing URA shares?) Not GWE - GTE!
 Separate raising? GTE registered on 23/5/2007 - got some GTE (at 1 GTE sh per btw ~8.55 and ~11.2 URA shs?), plus bought 25K more in (20c/sh) SPP?
@@ -116,6 +119,9 @@ Resolveable by:
 
 
 WCUO - various - lapsed/conv opts? Delisted after T/O by Denison Mines Corp. - 8/7/2011 - 24c/sh. 560K opts left over.
+WCUO - option expiry - 560K (25c) - exp: 29/01/2010
+Resolveable by:
+1110043,WCUO lapsed,29/1/2010,L,WCUO,560000,,,,,
 
 
 CDB (buy, sell) - consolid - 2/7/2015 - 30:1
@@ -160,6 +166,7 @@ DYL - buy 30K, curr: 36 2/3 K - ? Some kind of 2:9 entitlement?
 
 AKK - various - have outstanding - consolids? Curr actual holdings: 35K (CS) + 90483 (NW) (instead of 131430 ?? SPP?) - CS: bought 350K - 10:1 consolid?
 Think it is a string of SPPs (by BPay?)? Then a 10:1 consolid.
+9-10/6/2011 - cc statement: some 15K 'cover AKK' entr(y/ies)?
 
 
 AHZ - various - have outstanding - consolids? 49.5K -> 3.7K ?? Consolid.: 27/11/2015 - 10:1 - also, prob have recent sale of 12.5K - then all is explained.
@@ -195,11 +202,15 @@ MAT (50K sell mid 2009, 4900 sell 2015) - various - consolid? other?
 KAL (buy - 24.5K 27/12/2007) - name change? Yes: to Matsa Resources Ltd (MAT) - 13/1/2009, plus poss consol - 5:1 ~22/12/2008 ?
 KALO (buy - 64K 9/4/2008) - lapsed/converted options? name change? Yes: to Matsa Resources Ltd (MAT) - 13/1/2009, plus poss consol - 5:1 ~22/12/2008
 Partially resolveable by (numbers still don't add up, but name change explained):
-1110019,KAL 2 MAT 1,13/1/2009,N,KAL,24500,,,,MAT,
-1110020,KALO 2 MATO 1,13/1/2009,N,KALO,64000,,,,MATO,
+1110037,KAL 2 MAT 1,13/1/2009,N,KAL,24500,,,,MAT,
+1110038,KALO 2 MATO 1,13/1/2009,N,KALO,64000,,,,MATO,
 
 
 ROBO (buy) - lapsed/conv opts? Looks like 500K lapsed opts.
+ROBO - consolid: 40:1 - 500K -> 12.5K - 18/12/2012 (NB: exp on 31/12/2014)
+Resolveable by:
+1110046,ROBO 40 to 1,18/12/2012,C,ROBO,500000,,,,,12500
+1110047,ROBO lapsed,31/12/2014,L,ROBO,12500,,,,,
 
 SRT - name change to IAM? Yes: 25/8/2016
 Resolveable by:
@@ -210,8 +221,8 @@ CTR - various - consolids - outstanding (10K) - other? Will be consolid from 515
 CTR - top up to mkt'ble parcel - 5/11/15 - $242.50
 Consolid from 5/5/2015, on 100:1 basis.
 Resolveable by:
-1110036,CTR 100 to 1,5/5/2015,C,CTR,515000,,,,,5150
-1110037,CTR top up 1,5/11/2015,P,CTR,4850,0.05,,242.50,,
+1110039,CTR 100 to 1,5/5/2015,C,CTR,515000,,,,,5150
+1110040,CTR top up 1,5/11/2015,P,CTR,4850,0.05,,242.50,,
 
 
 WGP - 60K sell - name change to Titan Energy Ltd (TTE) (18/10/2011), then TTE Petroleum Ltd (TTE) (4/9/2015) - doesn't explain things
@@ -225,9 +236,9 @@ NEM (sell) - name change? Newmont? Newmont: delisted on 17/2/2010.
 WMTO (buy) - lapsed/conv opts? Conv opts, but looks like bought 45K, conv 36K. Have unmatched sell of 36K WMT:
 {"security":"WMTO","net_outcome":-4967.99,"currency":"AUST $","end":"2007-06-22","finalised":false,"start":"2007-06-22","current":45000,"events":[{"brokerage":17.99,"ave_price":0.11,"security":"WMTO","net_proceeds":4967.99,"trade_date":"2007-06-22","conf_num":3620656,"settle_date":"2007-06-27","units":45000,"currency":"AUST $","order_num":"6821979","action":"Buy"}],"costs":17.99}
 18/06/2007,3611028,6781409,S,WMT,"36,000",0.249,19.95,"8,944.62",21/06/2007,Confirmed
-Resolveable by:
-1110001,WMTO 2 WMT 1,<date>,O,WMTO,36000,<conv cost>,,<total conv cost>,WMT,
-1110002,WMTO Lapsed 1,<date>,L,WMTO,9000,,,,,
+Would be resolveable by:, except the dates don't match up! WMTOs bought after WMTs sold!
+#1110001,WMTO 2 WMT 1,<date>,O,WMTO,36000,<conv cost>,,<total conv cost>,WMT,
+#1110002,WMTO Lapsed 1,<date>,L,WMTO,9000,,,,,
 
 
 RMG - various - consolids - outstanding - other?
@@ -238,21 +249,32 @@ Resolveable by:
 
 
 JMS - various - conv opts? other? No record of JMSO events (but I'm sure there ought to be!).Curr balance supposedly -95719 sh. NB: delisted 10/1/2014.
+JMS - option exer - 57K (20c) - $11.4K - 8/2/2007
+Partially resolveable by:
+1110044,JMSO exc 1,8/2/2007,O,JSMO,57000,0.20,,11400,JSM,
+1110045,JMS Delisted,10/1/2014,D,JMS,57000,,,,,
 
 
 RMI - (-140K !?) various - consolids - outstanding (9K) - conv opts? other? Dates to ~2007 - missed transactions? See AEX/WGP above.
 
 CNN (buy - 450K) - name change? Yes: 22/4/2015 -> SES (Secos Group Ltd). Also, poss. consolid (as CNN) 100:1 on 9/4/2015? Should have 4.5K SES?
-Prob took advantage of unmarketable shares sale (finalised by ~6/1/2015)? $0.002/sh for parcels below 166666 sh. 450K @ .2c/sh -> $900.
+Prob _didn't_ take advantage of unmarketable shares sale (finalised by ~6/1/2015)? $0.002/sh for parcels below 166666 sh. 450K @ .2c/sh -> $900.
+SES (was Cardio Bioplastics) - consolid: 100:1 - 750K -> 7.5K & SESOB 112.5K -> 1125 - 20/4/2015 (recommence trading as SES ~22/4/2015)
+Partially resolveable by? Numbers don't fully match up yet...:
+#1110048,CNN 100 to 1,20/4/2015,C,CNN,750000,,,,,7500
+#1110049,CNNOB 100 to 1,20/4/2015,C,CNNOB,112500,,,,,1125
+#1110050,CNN 2 SES 1,22/4/2015,N,CNN,7500,,,,SES,
+#1110051,CNNOB 2 SESOB 1,22/4/2015,N,CNNOB,7500,,,,SESOB,
+
 
 WPI (buy - 90K) - name change? Yes: 18/3/16 -> CIZ
 Resolveable by:
-1110038,WPI 2 CIZ 1,18/3/2016,N,WPI,90000,,,,CIZ,
+1110041,WPI 2 CIZ 1,18/3/2016,N,WPI,90000,,,,CIZ,
 
 
 BLRO (buy) - lapsed/conv opts? Conv: BLRO - conv - 48K opts - 15/2/11 - $2160
 Resolveable by:
-1110039,BLRO exc 1,<date: ~15/2/11>,O,BLRO,48000,0.045,,2160.00,BLR,
+1110042,BLRO exc 1,<date: ~15/2/11>,O,BLRO,48000,0.045,,2160.00,BLR,
 
 
 
@@ -272,3 +294,27 @@ RXLOA - conv - 190K opts - 11/7/11 $2850
 URA - SPP - 8/3/07: $5K
 URA/GWE share offer - 23/4/07: $5K
 WML - SPP - 17/4/07: $4935
+
+
+9-10/6/2011 - cc statement: some 15K 'cover AKK' entr(y/ies)?
+9/3/2012 - cc statement: 787.50 - 'INTERNET BPAY   ADVANCE D SHARE'
+26/3/2012 - cc statement: 3500 - 'INTERNET TRANSFER cvr akk spp'
+9/4/2013 - cc statement: 10K - 'INTERNET TRANSFER cvr sh'
+21/5/2013 - cc statement: 2600 - 'INTERNET TRANSFER cvr sh exp'
+
+
+MNC - consolid: 50:1 - 430K -> 8.6K - 4/1/2017
+WKT - consolid: 23:1 - 70K -> 3044 - 6/12/2016
+WHN - consolid: 83:1 - 29K -> 350 - 7/12/2016
+WCUO - option expiry - 560K (25c) - exp: 29/01/2010
+JMS - option exer - 57K (20c) - $11.4K - 8/2/2007
+GRM - consolid: 20:1 - 400K -> 20K - 6/6/2012
+CTR - consolid: 100:1 - 515K -> 5150 - 14/5/2015
+CTR - top-up - existing: 5150 (as @ 21/10/2015), top-up min: 4850, cost: $242.50 (5c/sh) - done - by 6/11/2015 - allocation notice - 3/12/15
+CNNO - option expiry - 62.5K (0.6c) - exp: 31/12/2014
+RMIO - option expiry - ? (0.6c) - exp: 30/1/2015
+RMI - consolid: 10:1 - 90K -> 9K - 3/1/2015
+RMG - consolid: 33:1 - 443334 -> 13434 & 151667 -> 4595 - 19/9/2014
+ROBO - consolid: 40:1 - 500K -> 12.5K - 18/12/2012 (NB: exp on 31/12/2014)
+SES (was Cardio Bioplastics) - consolid: 100:1 - 750K -> 7.5K & SESOB 112.5K -> 1125 - 20/4/2015 (recommence trading as SES ~22/4/2015)
+

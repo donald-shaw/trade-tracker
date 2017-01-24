@@ -25,8 +25,8 @@ object TradeTrackerMain {
 
   def runWith(cfg: CliConfig) = try {
     val unfiltered: (Seq[Event], Traces) = if (cfg.reset) (Seq.empty, Map.empty) else readData(cfg.store, cfg.debug)
-    val prev_events = unfiltered._1.filter(ev => cfg.filter.contains(ev.security.asx_id))
-    val prev_traces: Traces = unfiltered._2.filterKeys(tr => cfg.filter.contains(tr.asx_id))
+    val prev_events = unfiltered._1.filter(ev => !cfg.filter.contains(ev.security.asx_id))
+    val prev_traces: Traces = unfiltered._2.filterKeys(tr => !cfg.filter.contains(tr.asx_id))
     if (cfg.debug) println(s"\nRead in previously processed events:\n${prev_events.map(_.order.number).mkString(", ")}\n\n")
     if (cfg.debug) println(s"\nRead in previously processed traces:\n${prev_traces.mkString(",\n")}\n\n")
     val writer = cfg.out.map(out => new PrintWriter(out.toFile)).getOrElse(new StringWriter())

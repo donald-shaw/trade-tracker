@@ -15,6 +15,7 @@ package object model {
     case object OptionExercise extends Action("Options Exercised", 'O', -1)
     case object OptionsLapsed extends Action("Options Lapsed", 'L', -1)
     case object Purchase extends Action("Purchase", 'P', 1)
+    case object Delisting extends Action("Delisting", 'D', -1)
 
     def fromStr(str: String): Action = str match {
       case "B" | "Buy" => Action.Buy
@@ -24,6 +25,7 @@ package object model {
       case "O" | "Options Exercised" => Action.OptionExercise
       case "L" | "Options Lapsed" => Action.OptionsLapsed
       case "P" | "Purchase" => Action.Purchase
+      case "D" | "Delisting" => Action.Delisting
       case other => throw new IllegalArgumentException(s"Unknown action: $other")
     }
   }
@@ -63,15 +65,17 @@ package object model {
 
   case class Event(confirmation: Confirmation, order: Order, trade_date: LocalDate, action: Action,
                    security: Security, units: Units, ave_price: Price, brokerage: Money, net_proc: Money,
-                   settle_date: LocalDate, alt_name: Option[Security] = None, alt_units: Option[Units] = None)
+                   settle_date: LocalDate, alt_name: Option[Security] = None, alt_units: Option[Units] = None,
+                   flipped: Boolean = false)
       extends Ordered[Event] {
 
     override def compare(that: Event): Int = trade_date.compareTo(that.trade_date)
 
     def flip(net_outcome: Money, costs: Money) = alt_name match {
-      case Some(alt_sec) => copy(security = alt_sec, units = units * -1, brokerage = costs,
-                                 net_proc = net_outcome + this.net_proc * this.action.sign, alt_name = None)
-      case _ => this
+      case Some(alt_sec) if !flipped => Some(copy(security = alt_sec, units = units * -1, brokerage = costs,
+                                 net_proc = net_outcome + this.net_proc * this.action.sign, alt_name = None, flipped = true))
+      case _ if !flipped => Some(copy(flipped = true))
+      case _ => None
     }
   }
 
