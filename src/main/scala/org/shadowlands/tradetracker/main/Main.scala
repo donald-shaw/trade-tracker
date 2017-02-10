@@ -37,7 +37,7 @@ object TradeTrackerMain {
         if (cfg.out.isDefined) System.err.append(err_msg)
         1
       case Right(entries) =>
-        val events = entries.map(toEvent).filterNot(entry => prev_events.contains(entry) || cfg.filter.contains(entry.security.asx_id)).sorted
+        val events = entries.map(toEvent).filterNot(entry => prev_events.contains(entry) || cfg.filter.contains(entry.security.asx_id)).sorted.distinct
         if (cfg.debug) println(s"Read in new events:\n\n${events.mkString(",\n")}\n\n")
         else if (cfg.codes.nonEmpty) println(s"Read in traces:\n\n${events.filter(ev => cfg.codes.contains(ev.security.asx_id)).mkString(",\n")}\n\n")
         val traces = accumEvents(prev_traces, events, cfg.debug, cfg.codes)

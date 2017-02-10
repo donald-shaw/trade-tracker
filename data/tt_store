@@ -1,0 +1,6 @@
+{"brokerage":29.95,"ave_price":0.015,"security":"TST","net_proceeds":779.95,"trade_date":"2016-11-14","conf_num":42,"settle_date":"2016-11-16","units":50000,"currency":"AUST $","order_num":"N345","action":"Buy"}
+{"brokerage":29.95,"ave_price":0.016,"security":"TST","net_proceeds":1670.05,"trade_date":"2016-11-20","conf_num":43,"settle_date":"2016-11-21","units":50000,"currency":"AUST $","order_num":"N346","action":"Sell"}
+===
+TST:
+{"security":"TST","net_outcome":890.0999999999999,"currency":"AUST $","end":"2016-11-20","finalised":true,"start":"2016-11-14","current":0,"events":[{"brokerage":29.95,"ave_price":0.016,"security":"TST","net_proceeds":1670.05,"trade_date":"2016-11-20","conf_num":43,"settle_date":"2016-11-21","units":50000,"currency":"AUST $","order_num":"N346","action":"Sell"},{"brokerage":29.95,"ave_price":0.015,"security":"TST","net_proceeds":779.95,"trade_date":"2016-11-14","conf_num":42,"settle_date":"2016-11-16","units":50000,"currency":"AUST $","order_num":"N345","action":"Buy"}],"costs":59.9}
+

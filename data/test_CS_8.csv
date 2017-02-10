@@ -1,0 +1,5 @@
+Confirmation Number,Order Number,Trade Date,Buy/ Sell,Security,Units,Average Price ($),Brokerage (inc GST.),Net Proceeds ($),Settlement Date,Confirmation Status
+52975843,N61064693,31/10/2011,B,CXY,220000,0.022,29.95,4869.95,4/11/2011,Confirmed
+51164401,N58816821,30/06/2011,B,CXY,240000,0.02,29.95,4829.95,5/07/2011,Confirmed
+51172530,N58828632,30/06/2011,S,CXY,240000,0.02,29.95,4770.05,5/07/2011,Confirmed
+67649818,N78924988,30/06/2015,S,MRV,220000,0.004,29.95,850.05,3/07/2015,Confirmed
