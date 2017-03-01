@@ -16,6 +16,7 @@ package object model {
     case object OptionsLapsed extends Action("Options Lapsed", 'L', -1)
     case object Purchase extends Action("Purchase", 'P', 1)
     case object Delisting extends Action("Delisting", 'D', -1)
+    case object Takeover extends Action("Takeover", 'T', -1)
 
     def fromStr(str: String): Action = str match {
       case "B" | "Buy" => Action.Buy
@@ -26,6 +27,7 @@ package object model {
       case "L" | "Options Lapsed" => Action.OptionsLapsed
       case "P" | "Purchase" => Action.Purchase
       case "D" | "Delisting" => Action.Delisting
+      case "T" | "Takeover" => Action.Takeover
       case other => throw new IllegalArgumentException(s"Unknown action: $other")
     }
   }

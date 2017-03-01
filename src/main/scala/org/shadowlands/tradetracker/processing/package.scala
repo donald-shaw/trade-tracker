@@ -25,7 +25,7 @@ package object processing {
     }
 
     def combine(trace: SecurityTrace, event: Event) = event.action match {
-      case Sell | OptionsLapsed | Delisting =>
+      case Sell | OptionsLapsed | Delisting | Takeover =>
         trace.events.filter(ev => ev.action == Action.Buy && !ev.trade_date.isAfter(event.trade_date))
                     .find(_.units == event.units) match {
           case Some(buy) =>

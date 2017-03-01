@@ -22,73 +22,37 @@ Delisted: 29/08/2016
 
 ######
 
+Newly not determined:
+
+AGS - 'now' claims 900 left over (actual = 0) - albeit there is a small-holding share-sale facility letter dating to 18/7/2016,
+which I would likely have taken up.
+Additional: have $108 paid direct to bank acct on 28/10/2015 (or 10/11/2015?) from Alliance Resources Ltd - is this the share sale facility?
+Found it: Alliance Resources (AGS?) - unmarketable parcels sale - 25/07/2016 - 900 sh @ 3.25c/sh - $29.25 - payment date: 29/07/2016.
+
+
+######
+
 Not determined:
 
 NAE: have 140K, but _should_ have 175K? Need to check recent activity.
 
-
-WHN:
-29/07/2013,16791558,9971093305,B,WHN,"290,000",0.017,17.99,"4,947.99",1/08/2013,Confirmed -- consolid? 350 left
-Resolveable by:
-1110009,WHN 10 to 1 NW,4/12/2014,C,WHN,290000,,,,,29000
-1110010,WHN 83 to 1 NW,12/12/2016,C,WHN,29000,,,,,350
-
-
-MNC  -  various btw 2013-09-03 to 2014-07-09 - 430K left over
-Resolveable by:
-1110011,MNC 50 to 1 NW,22/12/2016,C,MNC,430000,,,,,8600
-
-
-MEO - 14K buy, 7K sell - consolid? No - Name change: to Melbana Energy Ltd (MAY) - 8/11/2016, have 7K MAY still remaining
-Resolveable by:
-1110016,MEO 2 MAY 1,8/11/2016,N,MEO,7000,,,,MAY,
-
-
 NAB (bal: -187)
-
-MLSOA (2 buys) - lapsed/converted options?
-Resolveable by:
-1110017,MLSOA lapsed,31/12/2010,L,MLSOA,400000,,,,,
-
-
-GSE (2 sells - 220K, 13/1/2010) - conv options? No apparent name change
-GSEO (buy - 120K [NW?] on 27/4/2007) - conv options? No apparent name change
-Excercise of options: 6/11/2007: 120K NW, 100K CS
-In fact:
-GSEO - conv - 120K opts - 25/10/07 - $6K
-GSEO - conv - 100K opts - 25/10/07 - $5K
-Bonus issue: 25K & 30K GSEO on 19/06/2008 (both CS) - where did these go? Otherwise resolveable by:
-1110018,GSEO exc CS 1,6/11/2007,O,GSEO,100000,0.05,,5000,GSE,
-1110019,GSEO exc NW 1,6/11/2007,O,GSEO,120000,0.05,,6000,GSE,
 
 
 PIE (buy) - name change? Yes: to Newzulu Ltd (NWZ) - 20/8/2014 - Also consolid? Have 3,750 NWZ left
-Resolveable by (except for extra 12500???):
-1110020,PIE 2 NWZ,20/8/2014,N,PIE,100000,,,,NWZ,
-1110021,PIE 30 to 1,23/10/2012,C,PIE,112500,,,,,3750
-
-
-RXLOA (3 buys) - lapsed/converted options? No apparent name change
-lapsed on 31/07/2011? Were converted, tho! See:
-RXLOA - conv - 100K opts - 11/7/11 $1500
-RXLOA - conv - 190K opts - 11/7/11 $2850
+Also, have extra 12500 obtained from - looks like SPP in Feb/Mar 2011.
 Resolveable by:
-1110022,RXLOA exc 1,11/07/2011,O,RXLOA,290000,0.015,,4350,RXL,
+1110048,PIE 1 for 8 rights 1,25/03/2011,P,PIE,12500,0.02,,250,,
+1110020,PIE 30 to 1,23/10/2012,C,PIE,112500,,,,,3750
+1110021,PIE 2 NWZ,20/8/2014,N,PIE,3750,,,,NWZ,
 
 
 MNM - various - ? No apparent name change
 MNMOA - various - ? No apparent name change
+Have SPP (@ 1 for 12 @ 9.75c/sh + att option) due for completion 18/08/2011 - but from 20K, would expect 1667, not 3334.
 27/10/2011,Rights Entitlements: from 20K MNM -> + 3334 MNM, 3334 MNMOA
 1/11/2011,Rights Entitlements: +6666 -> 30K, & + 6666 -> 10K  ???? (latter 6666 are MNMOA?)
 Does explain 10K excess sold for each of MNM and MNMOA, tho!
-
-
-CXY (2 buys) - name change? Yes: to Moreton Respurces Ltd (MRV) - 11/10/2013
-2/07/2015,19761069,9984957269,S,MRV,"160,000",0.004,17.99,622.01,7/07/2015,Confirmed
-67649818,N78924988,30/06/2015,S,MRV,220000,0.004,29.95,850.05,3/07/2015,Confirmed
-Resolveable by (could be combined into one? Currently keeping as one each for CS/NW):
-1110006,CXY 2 MRV CS 1,11/10/2013,N,CXY,220000,,,,MRV,
-1110007,CXY 2 MRV NW 1,11/10/2013,N,CXY,160000,,,,MRV,
 
 
 APG - various - ? consolids? No apparent name change. 70K extra sold - probably an SPP.
@@ -116,25 +80,16 @@ Relevant:
 URA - SPP - 8/3/07: $5K (credited to account on 29/3/2007 ?) - $0.449168 / sh => 11131 sh. This matches up.
 Resolveable by:
 1110036,URA SPP 1,29/3/2007,P,URA,11131,0.449168,,5000,,
+GTE/URA fixed, GTEO/URAO not yet fixed.
 
 
 WCUO - various - lapsed/conv opts? Delisted after T/O by Denison Mines Corp. - 8/7/2011 - 24c/sh. 560K opts left over.
 WCUO - option expiry - 560K (25c) - exp: 29/01/2010
 Resolveable by:
-1110043,WCUO lapsed,29/1/2010,L,WCUO,560000,,,,,
-
-
-CDB (buy, sell) - consolid - 2/7/2015 - 30:1
-Resolveable by:
-1110026,CDB 30 to 1,2/7/2015,C,CDB,620000,,,,,20667
-
-
-AMN (sell) - name change? Yes, see next entry! --v
-^-v
-GRM (buy) - name change? Yes: to Agrimin Ltd (AMN) - 17/12/2014 + consolid (20:1) (completion notice - 6/6/2012)
-Resolveable by:
-1110027,GRM 20 to 1,6/6/2012,C,GRM,400000,,,,,20000
-1110028,GRM 2 AMN 1,17/12/2014,N,GRM,20000,,,,AMN,
+1110049,WCUO exc 1,6/11/2007,O,WCUO,200000,0.25,,50000,WCU,
+1110043,WCUO lapsed,29/1/2010,L,WCUO,360000,,,,,
+1110050,WCU TO by Denison,2/6/2011,T,WCU,200000,0.24,,48000,WCU,
+Also found: WCU 200K on 2/6/2011 - part of T/O by Denison? So, 200K opts conv. (@25c => $50K), then sold to Denison (@24c - $48K - notice received)?
 
 
 JKA - various - consolids? some left over still
@@ -145,57 +100,29 @@ Resolveable by adding back some trades that got missed when compiling together '
 # 25186575,N27018405,23/05/2007,B,AEX,200000,0.049,29.95,9770.05,??/05/2007,Confirmed
 
 
-ADY - currently 3900, buy of 19.5K - consolid? Yes: 5:1 on ~ 2/12/2010
-Resolveable by:
-1110029,ADY 5 to 1,2/12/2010,C,ADY,19500,,,,,3900
-
-
-ABU (buy, sell) - consolid? Also, name change from: Tantalum Australia Ltd (TAA) - 22/8/2006. Consolid: btw late '07 and mid '15.
-Resolveable by:
-1110030,ABU 15 to 1,<date>,C,ABU,65000,,,,,4334
-
-
-AVBOB (buy) - + various - ? No apparent name change. Option conv: AVBOB - conv - 42K opts @ 1.5c - 23/4/12 - $630
-Resolveable by:
-1110031,AVBOB exc 1,<date: ~23/4/12>,O,AVBOB,42000,0.015,,630.00,AVB,
-
-
 CBS (buy) - name change? Name change from: RIMCapital Ltd (RMC) - 2/3/2011. Not an issue - 240K bought in 2013, never sold. Currently in suspension?
+Also found: 100:1 consolid - 240K -> 2.4K on 15/10/2015
+
 
 DYL - buy 30K, curr: 36 2/3 K - ? Some kind of 2:9 entitlement?
+Yep - have alloc. of 6667 sh on 27 July 2012 - reason not specified?
+
 
 AKK - various - have outstanding - consolids? Curr actual holdings: 35K (CS) + 90483 (NW) (instead of 131430 ?? SPP?) - CS: bought 350K - 10:1 consolid?
 Think it is a string of SPPs (by BPay?)? Then a 10:1 consolid.
 9-10/6/2011 - cc statement: some 15K 'cover AKK' entr(y/ies)?
+Also found: 'J Class' AKKOB opts - 214,285 allotted on 6/7/2011 (from prospectus dated 23/5/2011).
+Also found: allotment of 344,828 sh on 3/4/2012 from SPP (dated 2/3/2012)
+Also found: 19/11/2014 - consolid - 10:1: 904828 -> 90483, and 350K -> 35K
 
 
-AHZ - various - have outstanding - consolids? 49.5K -> 3.7K ?? Consolid.: 27/11/2015 - 10:1 - also, prob have recent sale of 12.5K - then all is explained.
+AHZ - various - have outstanding - consolids? 49.5K -> 3.7K ?? Consolid.: 20/11/2015 - 10:1 - also, prob have recent sale of 12.5K - then all is explained.
 Resolveable by (along with v. recent 12.5K sale that didn't get into this 'full' listing):
-1110032,AHZ 10 to 1,27/11/2015,C,AHZ,37000,,,,,3700
-
-
-QMNO - various - ? No apparent name change. 100K bought, none ever sold - likely lapsed opts?
-Resolveable by:
-1110033,QMNO Lapsed 1,<date>,L,QMNO,100000,,,,,
-
-
-NRU - various - ? Name change: to Consolidated Zinc Ltd (CZL) - 23/6/2015, plus 20:1 consolidation just prior (~22/6/2015)
-Sales of CZL:
-67678883,N78963451,2/07/2015,S,CZL,20000,0.04,29.95,770.05,7/07/2015,Confirmed  --- also a sell on NW, same day
-2/07/2015,19755192,9984934788,S,CZL,"16,250",0.04,17.99,632.01,7/07/2015,Confirmed  --- also a sell on CS, same day
-Resolveable by:
-1110012,NRU 20 to 1 NW 1,22/6/2015,C,NRU,400000,,,,,20000
-1110013,NRU 20 to 1 CS 1,22/6/2015,C,NRU,325000,,,,,16250
-1110014,NRU 2 CZL CS 1,23/6/2015,N,NRU,20000,,,,CZL,
-1110015,NRU 2 CZL NW 1,23/6/2015,N,NRU,16250,,,,CZL,
+1110032,AHZ 10 to 1,20/11/2015,C,AHZ,37000,,,,,3700
+# Should this consolid. also contain the 12.5K sold?
 
 
 CTP (sell) - neg balance (-40K from late 2009) - ? Seems like an SPP (paid by BPay?) - 1:1 with 1 free opt per 2 sh attached - likely in later 2009?
-
-NMR (buy) - name change? Yes: to Walkabout Resources Ltd (WKT) - 15/4/2013 - have 3044 sh (consolid - 23:1 on 1/12/2016)
-Resolveable by:
-1110034,NMR 2 WKT 1,15/4/2013,N,NMR,70000,,,,WKT,
-1110035,WKT 23 to 1,1/12/2016,C,WKT,70000,,,,,3044
 
 
 MAT (50K sell mid 2009, 4900 sell 2015) - various - consolid? other?
@@ -204,6 +131,7 @@ KALO (buy - 64K 9/4/2008) - lapsed/converted options? name change? Yes: to Matsa
 Partially resolveable by (numbers still don't add up, but name change explained):
 1110037,KAL 2 MAT 1,13/1/2009,N,KAL,24500,,,,MAT,
 1110038,KALO 2 MATO 1,13/1/2009,N,KALO,64000,,,,MATO,
+Look like have SPP for 50K sh @ 10c ($5K total) in March 2009 (close date: 25th) - paid by CC (bpay).
 
 
 ROBO (buy) - lapsed/conv opts? Looks like 500K lapsed opts.
@@ -211,18 +139,12 @@ ROBO - consolid: 40:1 - 500K -> 12.5K - 18/12/2012 (NB: exp on 31/12/2014)
 Resolveable by:
 1110046,ROBO 40 to 1,18/12/2012,C,ROBO,500000,,,,,12500
 1110047,ROBO lapsed,31/12/2014,L,ROBO,12500,,,,,
+# Didn't get processed???
+
 
 SRT - name change to IAM? Yes: 25/8/2016
-Resolveable by:
+Partially resolveable by (still haven't accounted for missing resultant IAM shares - sold by later order?):
 1110008,SRT 2 IAM 1,25/8/2016,N,SRT,360000,,,,IAM,
-
-
-CTR - various - consolids - outstanding (10K) - other? Will be consolid from 515K + 'top-up' (or consolid, then 'top-up'):
-CTR - top up to mkt'ble parcel - 5/11/15 - $242.50
-Consolid from 5/5/2015, on 100:1 basis.
-Resolveable by:
-1110039,CTR 100 to 1,5/5/2015,C,CTR,515000,,,,,5150
-1110040,CTR top up 1,5/11/2015,P,CTR,4850,0.05,,242.50,,
 
 
 WGP - 60K sell - name change to Titan Energy Ltd (TTE) (18/10/2011), then TTE Petroleum Ltd (TTE) (4/9/2015) - doesn't explain things
@@ -230,8 +152,11 @@ Looking like missed transactions? Around same time (mid/late 2007) as for AEX (q
 
 
 MYG (buy - 44K) - name change? Bought out by Doray Minerals Ltd (DRM): 16/2/2015 -> 1 sh/opt / 9.5 MYG shs/opts - so what happened to my DRM holding???
+Also found: Rights accepted - 4.4K allotted on 28/3/2014.
+
 
 NEM (sell) - name change? Newmont? Newmont: delisted on 17/2/2010.
+
 
 WMTO (buy) - lapsed/conv opts? Conv opts, but looks like bought 45K, conv 36K. Have unmatched sell of 36K WMT:
 {"security":"WMTO","net_outcome":-4967.99,"currency":"AUST $","end":"2007-06-22","finalised":false,"start":"2007-06-22","current":45000,"events":[{"brokerage":17.99,"ave_price":0.11,"security":"WMTO","net_proceeds":4967.99,"trade_date":"2007-06-22","conf_num":3620656,"settle_date":"2007-06-27","units":45000,"currency":"AUST $","order_num":"6821979","action":"Buy"}],"costs":17.99}
@@ -246,6 +171,7 @@ Resolveable by:
 1110003,RMG rights CS 1,1/11/2010,P,RMG,63334,<cost/sh>,,<total>,,
 1110004,RMG 33 to 1 NW,15/9/2014,C,RMG,151667,,,,,4595
 1110005,RMG 33 to 1 CS,15/9/2014,C,RMG,443334,,,,,13434
+# Not resolved yet - claims I have negative (3K-odd) outstanding.
 
 
 JMS - various - conv opts? other? No record of JMSO events (but I'm sure there ought to be!).Curr balance supposedly -95719 sh. NB: delisted 10/1/2014.
@@ -257,6 +183,7 @@ Partially resolveable by:
 
 RMI - (-140K !?) various - consolids - outstanding (9K) - conv opts? other? Dates to ~2007 - missed transactions? See AEX/WGP above.
 
+
 CNN (buy - 450K) - name change? Yes: 22/4/2015 -> SES (Secos Group Ltd). Also, poss. consolid (as CNN) 100:1 on 9/4/2015? Should have 4.5K SES?
 Prob _didn't_ take advantage of unmarketable shares sale (finalised by ~6/1/2015)? $0.002/sh for parcels below 166666 sh. 450K @ .2c/sh -> $900.
 SES (was Cardio Bioplastics) - consolid: 100:1 - 750K -> 7.5K & SESOB 112.5K -> 1125 - 20/4/2015 (recommence trading as SES ~22/4/2015)
@@ -265,11 +192,39 @@ Partially resolveable by? Numbers don't fully match up yet...:
 #1110049,CNNOB 100 to 1,20/4/2015,C,CNNOB,112500,,,,,1125
 #1110050,CNN 2 SES 1,22/4/2015,N,CNN,7500,,,,SES,
 #1110051,CNNOB 2 SESOB 1,22/4/2015,N,CNNOB,7500,,,,SESOB,
+Also found: 17/4/2014: 187.5K CNN and 62.5K CNNO (exp. 31/12/2014) allocated (for what? Looks like an SPP)
+Also found: 112.5K CNNOB opts allocated (no date!): "resulting from your application for shares in the above mentioned Company" -envelope marked 21/03/2012.
 
 
-WPI (buy - 90K) - name change? Yes: 18/3/16 -> CIZ
+
+######
+
+Now fixed:
+----------
+
+
+ABU (buy, sell) - consolid? Also, name change from: Tantalum Australia Ltd (TAA) - 22/8/2006. Consolid: btw late '07 and mid '15.
 Resolveable by:
-1110041,WPI 2 CIZ 1,18/3/2016,N,WPI,90000,,,,CIZ,
+1110030,ABU 15 to 1,1/7/2014,C,ABU,65000,,,,,4334
+Found: consolid happened on 1/7/2014.
+
+
+ADY - currently 3900, buy of 19.5K - consolid? Yes: 5:1 on ~ 2/12/2010
+Resolveable by:
+1110029,ADY 5 to 1,2/12/2010,C,ADY,19500,,,,,3900
+
+
+AMN (sell) - name change? Yes, see next entry! --v
+^-v
+GRM (buy) - name change? Yes: to Agrimin Ltd (AMN) - 17/12/2014 + consolid (20:1) (completion notice - 6/6/2012)
+Resolveable by:
+1110027,GRM 20 to 1,6/6/2012,C,GRM,400000,,,,,20000
+1110028,GRM 2 AMN 1,17/12/2014,N,GRM,20000,,,,AMN,
+
+
+AVBOB (buy) - + various - ? No apparent name change. Option conv: AVBOB - conv - 42K opts @ 1.5c - 23/4/12 - $630
+Resolveable by:
+1110031,AVBOB exc 1,<date: ~23/4/12>,O,AVBOB,42000,0.015,,630.00,AVB,
 
 
 BLRO (buy) - lapsed/conv opts? Conv: BLRO - conv - 48K opts - 15/2/11 - $2160
@@ -277,13 +232,101 @@ Resolveable by:
 1110042,BLRO exc 1,<date: ~15/2/11>,O,BLRO,48000,0.045,,2160.00,BLR,
 
 
+CDB (buy, sell) - consolid - 2/7/2015 - 30:1
+Resolveable by:
+1110026,CDB 30 to 1,2/7/2015,C,CDB,620000,,,,,20667
+
+
+CTR - various - consolids - outstanding (10K) - other? Will be consolid from 515K + 'top-up' (or consolid, then 'top-up'):
+CTR - top up to mkt'ble parcel - 3/12/15 - $242.50 (4850 @5c/sh)
+Consolid from 5/5/2015, on 100:1 basis.
+Resolveable by:
+1110039,CTR 100 to 1,5/5/2015,C,CTR,515000,,,,,5150
+1110040,CTR top up 1,3/12/2015,P,CTR,4850,0.05,,242.50,,
+
+
+CXY (2 buys) - name change? Yes: to Moreton Respurces Ltd (MRV) - 11/10/2013
+2/07/2015,19761069,9984957269,S,MRV,"160,000",0.004,17.99,622.01,7/07/2015,Confirmed
+67649818,N78924988,30/06/2015,S,MRV,220000,0.004,29.95,850.05,3/07/2015,Confirmed
+Resolveable by (could be combined into one? Currently keeping as one each for CS/NW):
+1110006,CXY 2 MRV CS 1,11/10/2013,N,CXY,220000,,,,MRV,
+1110007,CXY 2 MRV NW 1,11/10/2013,N,CXY,160000,,,,MRV,
+
+
+GSE (2 sells - 220K, 13/1/2010) - conv options? No apparent name change
+GSEO (buy - 120K [NW?] on 27/4/2007) - conv options? No apparent name change
+Excercise of options: 6/11/2007: 120K NW, 100K CS
+In fact:
+GSEO - conv - 120K opts - 25/10/07 - $6K (chq 343, proc'd on 29/10)
+GSEO - conv - 100K opts - 25/10/07 - $5K (chq 344, proc'd on 29/10)
+Bonus issue: 25K & 30K GSEO on 19/06/2008 (both CS) - where did these go? Otherwise resolveable by:
+1110018,GSEO exc CS 1,6/11/2007,O,GSEO,100000,0.05,,5000,GSE,
+1110019,GSEO exc NW 1,6/11/2007,O,GSEO,120000,0.05,,6000,GSE,
+
+
+MNC  -  various btw 2013-09-03 to 2014-07-09 - 430K left over
+Resolveable by:
+1110011,MNC 50 to 1 NW,22/12/2016,C,MNC,430000,,,,,8600
+
+
+MEO - 14K buy, 7K sell - consolid? No - Name change: to Melbana Energy Ltd (MAY) - 8/11/2016, have 7K MAY still remaining
+Resolveable by:
+1110016,MEO 2 MAY 1,8/11/2016,N,MEO,7000,,,,MAY,
+
+
+MLSOA (2 buys) - lapsed/converted options?
+Resolveable by:
+1110017,MLSOA lapsed,31/12/2010,L,MLSOA,400000,,,,,
+
+
+NMR (buy) - name change? Yes: to Walkabout Resources Ltd (WKT) - 15/4/2013 - have 3044 sh (consolid - 23:1 on 1/12/2016)
+Resolveable by:
+1110034,NMR 2 WKT 1,15/4/2013,N,NMR,70000,,,,WKT,
+1110035,WKT 23 to 1,1/12/2016,C,WKT,70000,,,,,3044
+
+
+NRU - various - ? Name change: to Consolidated Zinc Ltd (CZL) - 23/6/2015, plus 20:1 consolidation just prior (~15/6/2015)
+Sales of CZL:
+67678883,N78963451,2/07/2015,S,CZL,20000,0.04,29.95,770.05,7/07/2015,Confirmed  --- also a sell on NW, same day
+2/07/2015,19755192,9984934788,S,CZL,"16,250",0.04,17.99,632.01,7/07/2015,Confirmed  --- also a sell on CS, same day
+Resolveable by:
+1110012,NRU 20 to 1 NW 1,15/6/2015,C,NRU,400000,,,,,20000
+1110013,NRU 20 to 1 CS 1,15/6/2015,C,NRU,325000,,,,,16250
+1110014,NRU 2 CZL CS 1,23/6/2015,N,NRU,20000,,,,CZL,
+1110015,NRU 2 CZL NW 1,23/6/2015,N,NRU,16250,,,,CZL,
+
+
+QMNO - various - ? No apparent name change. 100K bought, none ever sold - likely lapsed opts?
+Resolveable by:
+1110033,QMNO Lapsed 1,<date>,L,QMNO,100000,,,,,
+
+
+RXLOA (3 buys) - lapsed/converted options? No apparent name change
+lapsed on 31/07/2011? Were converted, tho! See:
+RXLOA - conv - 100K opts - 11/7/11 $1500
+RXLOA - conv - 190K opts - 11/7/11 $2850
+Resolveable by:
+1110022,RXLOA exc 1,11/07/2011,O,RXLOA,290000,0.015,,4350,RXL,
+
+
+WHN:
+29/07/2013,16791558,9971093305,B,WHN,"290,000",0.017,17.99,"4,947.99",1/08/2013,Confirmed -- consolid? 350 left
+Resolveable by:
+1110009,WHN 10 to 1 NW,4/12/2014,C,WHN,290000,,,,,29000
+1110010,WHN 83 to 1 NW,12/12/2016,C,WHN,29000,,,,,350
+
+
+WPI (buy - 90K) - name change? Yes: 18/3/16 -> CIZ
+Resolveable by:
+1110041,WPI 2 CIZ 1,18/3/2016,N,WPI,90000,,,,CIZ,
+
 
 =====
 
 
 AVBOB - conv - 42K opts @ 1.5c - 23/4/12 - $630
 BLRO - conv - 48K opts - 15/2/11 - $2160
-CTR - top up to mkt'ble parcel - 5/11/15 - $242.50
+CTR - top up to mkt'ble parcel - 5/11/15 - $242.50 (4850 @5c/sh)
 GDNO - conv - 101K opts - 27/6/07 - $30300
 GSEO - conv - 120K opts - 25/10/07 - $6K
 GSEO - conv - 100K opts - 25/10/07 - $5K
@@ -318,3 +361,5 @@ RMG - consolid: 33:1 - 443334 -> 13434 & 151667 -> 4595 - 19/9/2014
 ROBO - consolid: 40:1 - 500K -> 12.5K - 18/12/2012 (NB: exp on 31/12/2014)
 SES (was Cardio Bioplastics) - consolid: 100:1 - 750K -> 7.5K & SESOB 112.5K -> 1125 - 20/4/2015 (recommence trading as SES ~22/4/2015)
 
+S32: 160 'divested' on 12/10/2016.
+Alliance Resources (AGS?) - unmarketable parcels sale - 25/07/2016 - 900 sh @ 3.25c/sh - $29.25 - payment date: 29/07/2016.
